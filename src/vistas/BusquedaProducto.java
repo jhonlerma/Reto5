@@ -32,50 +32,43 @@ public class BusquedaProducto extends JFrame {
 
     }
 
-    public static void inicializarComponentes() {
-        
-        JButton button;
+    public void inicializarComponentes() {
         
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        
-        if (shouldFill) {
-            //natural height, maximum width
-            gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        }
+        JButton boton;
+        JPanel panel = new JPanel();
+        getContentPane().add(panel);
 
-        button = new JButton("Button 1");
-        if (shouldWeightX) {
-            gridBagConstraints.weightx = 0.5;
-        }
+        boton = new JButton("Button 1");
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        pane.add(button, c);
+        panel.add(boton, gridBagConstraints);
 
-        button = new JButton("Button 2");
+        boton = new JButton("Button 2");
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        pane.add(button, c);
+        panel.add(boton, gridBagConstraints);
 
-        button = new JButton("Button 3");
+        boton = new JButton("Button 3");
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        pane.add(button, c);
+        panel.add(boton, gridBagConstraints);
 
-        button = new JButton("Long-Named Button 4");
+        boton = new JButton("Long-Named Button 4");
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 40;      //make this component tall
         gridBagConstraints.weightx = 0.0;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        pane.add(button, c);
+        panel.add(boton, gridBagConstraints);
 
-        button = new JButton("5");
+        boton = new JButton("5");
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 0;       //reset to default
         gridBagConstraints.weighty = 1.0;   //request any extra vertical space
@@ -84,6 +77,6 @@ public class BusquedaProducto extends JFrame {
         gridBagConstraints.gridx = 1;       //aligned with button 2
         gridBagConstraints.gridwidth = 2;   //2 columns wide
         gridBagConstraints.gridy = 2;       //third row
-        pane.add(button, c);
+        panel.add(boton, gridBagConstraints);
     }
 }
