@@ -4,6 +4,8 @@
  */
 package reto5;
 
+import vistas.BusquedaProducto;
+
 /**
  *
  * @author johne
@@ -15,6 +17,8 @@ public class Reto5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        BusquedaProducto vent = new BusquedaProducto();
     }
     
 }
