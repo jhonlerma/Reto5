@@ -4,14 +4,20 @@
  */
 package vistas;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -21,62 +27,50 @@ public class BusquedaProducto extends JFrame {
 
     public BusquedaProducto() {
 
-        setTitle("VENTANA LAYOUTFLOW");
-        setSize(400, 300);
+        setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridBagLayout());
-        setResizable(true);
+        setLayout(new FlowLayout(FlowLayout.LEADING));
+        setResizable(false);
         setLocation(1000, 0);
         inicializarComponentes();
+        pack();
         setVisible(true);
 
     }
 
     public void inicializarComponentes() {
-        
-        GridBagConstraints gridBagConstraints = new GridBagConstraints();
-        JButton boton;
+
+        JButton botonBuscar;
+        JLabel labelBuscar;
+        JTextField textoBuscar;
+        JLabel labelProducto;
+
         JPanel panel = new JPanel();
-        getContentPane().add(panel);
+        panel.setLayout(new GridBagLayout());
+        panel.setBorder(new EmptyBorder(new Insets(20, 0, 24, 0)));
+        GridBagConstraints bagConstraints = new GridBagConstraints();
 
-        boton = new JButton("Button 1");
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        panel.add(boton, gridBagConstraints);
+        labelBuscar = new JLabel("Codigo");
+        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.weightx = 1;
+        bagConstraints.ipady = 12;
+        bagConstraints.insets = new Insets(0, 24, 8, 24);
+        bagConstraints.gridx = 0;
+        bagConstraints.gridheight = 12;
+        panel.add(labelBuscar, bagConstraints);
 
-        boton = new JButton("Button 2");
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        panel.add(boton, gridBagConstraints);
+        textoBuscar = new JTextField();
+        panel.add(textoBuscar, bagConstraints);
 
-        boton = new JButton("Button 3");
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 0.5;
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        panel.add(boton, gridBagConstraints);
+        botonBuscar = new JButton("Buscar");
+        panel.add(botonBuscar, bagConstraints);
 
-        boton = new JButton("Long-Named Button 4");
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 40;      //make this component tall
-        gridBagConstraints.weightx = 0.0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        panel.add(boton, gridBagConstraints);
+        labelProducto = new JLabel("");
 
-        boton = new JButton("5");
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 0;       //reset to default
-        gridBagConstraints.weighty = 1.0;   //request any extra vertical space
-        gridBagConstraints.anchor = GridBagConstraints.PAGE_END; //bottom of space
-        gridBagConstraints.insets = new Insets(10, 0, 0, 0);  //top padding
-        gridBagConstraints.gridx = 1;       //aligned with button 2
-        gridBagConstraints.gridwidth = 2;   //2 columns wide
-        gridBagConstraints.gridy = 2;       //third row
-        panel.add(boton, gridBagConstraints);
+        panel.add(labelProducto, bagConstraints);
+        labelProducto.setPreferredSize(new Dimension(400, 200));
+        labelProducto.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        this.add(panel);
     }
 }
