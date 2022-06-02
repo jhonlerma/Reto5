@@ -5,6 +5,7 @@
 package reto5;
 
 import vistas.BusquedaProducto;
+import vistas.Principal;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Reto5 {
         // TODO code application logic here
         
         BusquedaProducto vent = new BusquedaProducto();
+        Principal vent2 = new Principal();
     }
     
 }

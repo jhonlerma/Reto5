@@ -11,7 +11,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -38,7 +37,7 @@ public class BusquedaProducto extends JFrame {
 
     }
 
-    public void inicializarComponentes() {
+    private void inicializarComponentes() {
 
         JButton botonBuscar;
         JLabel labelBuscar;
