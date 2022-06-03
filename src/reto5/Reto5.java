@@ -1,12 +1,8 @@
-<<<<<<< OURS
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package reto5;
 
-import vistas.BusquedaProducto;
-import vistas.ModificarInventario;
+import vista.BusquedaProducto;
+import vista.ModificarInventario;
+import vista.Principal;
 
 /**
  *
@@ -19,36 +15,10 @@ public class Reto5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
         ModificarInventario vent = new ModificarInventario();
-    }
-    
-}
-=======
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package reto5;
-
-import vistas.BusquedaProducto;
-import vistas.Principal;
-
-/**
- *
- * @author johne
- */
-public class Reto5 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        BusquedaProducto vent = new BusquedaProducto();
+//        BusquedaProducto vent = new BusquedaProducto();
         Principal vent2 = new Principal();
+        
     }
     
 }
->>>>>>> THEIRS
