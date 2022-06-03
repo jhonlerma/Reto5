@@ -5,7 +5,7 @@
 package reto5;
 
 import vista.BusquedaProducto;
-import vista.Principal;
+import vista.VistaPrincipal;
 
 /**
  *
@@ -18,9 +18,9 @@ public class Reto5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
         BusquedaProducto vent = new BusquedaProducto();
-        Principal vent2 = new Principal();
+        VistaPrincipal vent2 = new VistaPrincipal();
+        vent2.iniciar();
     }
     
 }

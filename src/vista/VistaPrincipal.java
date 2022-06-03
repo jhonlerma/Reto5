@@ -5,12 +5,12 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.BorderFactory;
+import java.awt.color.ColorSpace;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,38 +22,33 @@ import javax.swing.border.EmptyBorder;
  *
  * @author johne
  */
-public class Principal extends JFrame {
+public class VistaPrincipal extends JFrame {
 
-    public Principal() {
+    JLabel labelBienvenida;
+    JButton botonAgregarInventario;
+    JButton botonBuscarProducto;
+    JButton botonModificarInventario;
+    JButton botonVerInventario;
+    Color colorFondo = Color.DARK_GRAY;
+    Color colorTexto = Color.WHITE;
+
+    public VistaPrincipal() {
 
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setLayout(new FlowLayout(FlowLayout.LEADING));
         setResizable(false);
         setLocation(1000, 0);
         inicializarComponentes();
-        pack();
-        setVisible(true);
-
     }
 
     private void inicializarComponentes() {
 
-        JLabel labelBienvenida;
-        JButton botonAgregarInventario;
-        JButton botonBuscarProducto;
-        JButton botonModificarInventario;
-        JButton botonVerInventario;
-
-        JTextField textoBuscar;
-        JLabel labelProducto;
-
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBorder(new EmptyBorder(new Insets(20, 0, 24, 0)));
+        panel.setBackground(colorFondo);
+        
         GridBagConstraints bagConstraints = new GridBagConstraints();
-
-        labelBienvenida = new JLabel("Bienvenidos a Ferreteria El Vagabundo");
         bagConstraints.fill = GridBagConstraints.BOTH;
         bagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         bagConstraints.weightx = 1;
@@ -61,21 +56,45 @@ public class Principal extends JFrame {
         bagConstraints.insets = new Insets(0, 24, 8, 24);
         bagConstraints.gridx = 0;
         bagConstraints.gridheight = 12;
+
+        labelBienvenida = new JLabel("<html><h3>Bienvenidos a Ferreteria El Vagabundo</h3></html>");
+        labelBienvenida.setIcon(new ImageIcon("src/imagenes/vagabundo_icono_128.png"));
+        labelBienvenida.setBackground(colorFondo);
+        labelBienvenida.setForeground(colorTexto);
         panel.add(labelBienvenida, bagConstraints);
 
         botonAgregarInventario = new JButton("Agregar productos a inventario");
+        botonAgregarInventario.setBackground(colorFondo);
+        botonAgregarInventario.setForeground(colorTexto);
+        botonAgregarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         panel.add(botonAgregarInventario, bagConstraints);
 
         botonBuscarProducto = new JButton("Buscar producto por codigo");
+        botonBuscarProducto.setBackground(colorFondo);
+        botonBuscarProducto.setForeground(colorTexto);
+        botonBuscarProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
         panel.add(botonBuscarProducto, bagConstraints);
 
         botonModificarInventario = new JButton("Modificar inventario");
+        botonModificarInventario.setBackground(colorFondo);
+        botonModificarInventario.setForeground(colorTexto);
+        botonModificarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         panel.add(botonModificarInventario, bagConstraints);
 
         botonVerInventario = new JButton("Ver inventario");
+        botonVerInventario.setBackground(colorFondo);
+        botonVerInventario.setForeground(colorTexto);
+        botonVerInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         panel.add(botonVerInventario, bagConstraints);
-        
+
         this.add(panel);
+
+    }
+
+    public void iniciar() {
+        
+        pack();
+        setVisible(true);
 
     }
 
