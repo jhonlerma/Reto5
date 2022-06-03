@@ -21,6 +21,7 @@ public class Reto5 {
         BusquedaProducto vent = new BusquedaProducto();
         VistaPrincipal vent2 = new VistaPrincipal();
         vent2.iniciar();
+        vent.iniciar();
     }
     
 }

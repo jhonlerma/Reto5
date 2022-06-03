@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -72,6 +73,7 @@ public class BusquedaProducto extends JFrame {
         botonBuscar.setBackground(colorFondo);
         botonBuscar.setForeground(colorTexto);
         botonBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonBuscar.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
         panel.add(botonBuscar, bagConstraints);
 
         labelProducto = new JLabel("");

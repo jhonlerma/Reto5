@@ -9,12 +9,10 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.color.ColorSpace;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -67,24 +65,28 @@ public class VistaPrincipal extends JFrame {
         botonAgregarInventario.setBackground(colorFondo);
         botonAgregarInventario.setForeground(colorTexto);
         botonAgregarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonAgregarInventario.setIcon(new ImageIcon("src/imagenes/agregar_icono.png"));
         panel.add(botonAgregarInventario, bagConstraints);
 
         botonBuscarProducto = new JButton("Buscar producto por codigo");
         botonBuscarProducto.setBackground(colorFondo);
         botonBuscarProducto.setForeground(colorTexto);
         botonBuscarProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonBuscarProducto.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
         panel.add(botonBuscarProducto, bagConstraints);
 
         botonModificarInventario = new JButton("Modificar inventario");
         botonModificarInventario.setBackground(colorFondo);
         botonModificarInventario.setForeground(colorTexto);
         botonModificarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonModificarInventario.setIcon(new ImageIcon("src/imagenes/modificar_icono.png"));
         panel.add(botonModificarInventario, bagConstraints);
 
         botonVerInventario = new JButton("Ver inventario");
         botonVerInventario.setBackground(colorFondo);
         botonVerInventario.setForeground(colorTexto);
         botonVerInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonVerInventario.setIcon(new ImageIcon("src/imagenes/listar_icono.png"));
         panel.add(botonVerInventario, bagConstraints);
 
         this.add(panel);
