@@ -4,8 +4,8 @@
  */
 package reto5;
 
-import vistas.BusquedaProducto;
-import vistas.Principal;
+import vista.BusquedaProducto;
+import vista.Principal;
 
 /**
  *

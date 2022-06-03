@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package vistas;
+package vista;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,7 +28,7 @@ public class Principal extends JFrame {
 
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout(FlowLayout.LEADING));
+        //setLayout(new FlowLayout(FlowLayout.LEADING));
         setResizable(false);
         setLocation(1000, 0);
         inicializarComponentes();
@@ -54,8 +54,8 @@ public class Principal extends JFrame {
         GridBagConstraints bagConstraints = new GridBagConstraints();
 
         labelBienvenida = new JLabel("Bienvenidos a Ferreteria El Vagabundo");
-        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.fill = GridBagConstraints.BOTH;
+        bagConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         bagConstraints.weightx = 1;
         bagConstraints.ipady = 12;
         bagConstraints.insets = new Insets(0, 24, 8, 24);
