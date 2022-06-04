@@ -9,9 +9,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -25,19 +25,22 @@ import javax.swing.border.EmptyBorder;
  *
  * @author johne
  */
-public class BusquedaProducto extends JFrame {
+public class VistaBusquedaProducto extends JFrame {
 
     public Color colorFondo = Color.DARK_GRAY;
     public Color colorTexto = Color.WHITE;
+    public Color colorAceptar = Color.GREEN;
+    public Color colorCancelar = Color.RED;
+
     public JButton botonBuscar;
     public JLabel labelBuscar;
     public JTextField textoBuscar;
     public JLabel labelProducto;
 
-    public BusquedaProducto() {
+    public VistaBusquedaProducto() {
 
         setTitle("Inventario Ferreteria El Vagabundo");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocation(1000, 0);
         inicializarComponentes();
@@ -56,7 +59,7 @@ public class BusquedaProducto extends JFrame {
         bagConstraints.ipady = 12;
         bagConstraints.insets = new Insets(0, 24, 8, 24);
         bagConstraints.gridx = 0;
-        bagConstraints.gridheight = 12;
+        bagConstraints.gridheight = 1;
 
         labelBuscar = new JLabel("Codigo");
         labelBuscar.setBackground(colorFondo);
@@ -93,18 +96,80 @@ public class BusquedaProducto extends JFrame {
 
     public void alertaNoEncuentra() {
         
-        JLabel labelAlerta = new JLabel();
-        labelAlerta.setForeground(colorTexto);
-        labelAlerta.setText("No se encontro el codigo, desea crear un nuevo producto?");
-        labelAlerta.setIcon(new ImageIcon("src/imagenes/advertencia_icono.png"));
+        JDialog alerta;
+        JLabel labelAlerta;
+        JButton botonAceptar = new JButton();
+        JButton botonCancelar = new JButton();
         
-        JDialog alerta = new JDialog();
+        GridBagConstraints bagConstraints = new GridBagConstraints();
+        
+        alerta = new JDialog();
         alerta.setModal(true);
         alerta.setTitle("No se encontro codigo");
         alerta.getContentPane().setLayout(new GridBagLayout());
         alerta.getContentPane().setBackground(colorFondo);
         
-        alerta.add(labelAlerta);
+        labelAlerta = new JLabel();
+        labelAlerta.setForeground(colorTexto);
+        labelAlerta.setText("No se encontro el codigo, desea crear un nuevo producto?");
+        labelAlerta.setIcon(new ImageIcon("src/imagenes/advertencia_icono.png"));
+        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.weightx = 1;
+        bagConstraints.ipady = 12;
+        bagConstraints.insets = new Insets(24, 24, 24, 24);
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 0;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 3;
+        alerta.add(labelAlerta,bagConstraints);
+        
+        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.weightx = 1;
+        bagConstraints.weighty = 1;
+        bagConstraints.ipady = 4;
+        bagConstraints.insets = new Insets(0, 0, 0, 0);
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 1;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        alerta.add(Box.createHorizontalStrut(100),bagConstraints);
+        
+        botonCancelar = new JButton();
+        botonCancelar.setForeground(colorTexto);
+        botonCancelar.setBackground(colorCancelar);
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setIcon(new ImageIcon("src/imagenes/advertencia_icono.png"));
+        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.weightx = 1;
+        bagConstraints.weighty = 1;
+        bagConstraints.ipady = 4;
+        bagConstraints.insets = new Insets(0, 0, 0, 0);
+        bagConstraints.gridx = 1;
+        bagConstraints.gridy = 1;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        alerta.add(botonCancelar,bagConstraints);
+
+        botonAceptar = new JButton();
+        botonAceptar.setForeground(colorTexto);
+        botonAceptar.setBackground(colorAceptar);
+        botonAceptar.setText("Aceptar");
+        botonAceptar.setIcon(new ImageIcon("src/imagenes/advertencia_icono.png"));
+        bagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        bagConstraints.anchor = GridBagConstraints.PAGE_START;
+        bagConstraints.weightx = 1;
+        bagConstraints.ipady = 4;
+        bagConstraints.insets = new Insets(0, 0, 0, 0);
+        bagConstraints.gridx = 2;
+        bagConstraints.gridy = 1;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        alerta.add(botonAceptar,bagConstraints);
+
+
         alerta.pack();
         alerta.setVisible(true);
     }
