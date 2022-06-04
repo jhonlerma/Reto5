@@ -6,15 +6,16 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
@@ -26,12 +27,12 @@ import javax.swing.border.EmptyBorder;
  */
 public class BusquedaProducto extends JFrame {
 
-    Color colorFondo = Color.DARK_GRAY;
-    Color colorTexto = Color.WHITE;
-    JButton botonBuscar;
-    JLabel labelBuscar;
-    JTextField textoBuscar;
-    JLabel labelProducto;
+    public Color colorFondo = Color.DARK_GRAY;
+    public Color colorTexto = Color.WHITE;
+    public JButton botonBuscar;
+    public JLabel labelBuscar;
+    public JTextField textoBuscar;
+    public JLabel labelProducto;
 
     public BusquedaProducto() {
 
@@ -87,6 +88,24 @@ public class BusquedaProducto extends JFrame {
     public void iniciar() {
         pack();
         setVisible(true);
+        alertaNoEncuentra();
+    }
 
+    public void alertaNoEncuentra() {
+        
+        JLabel labelAlerta = new JLabel();
+        labelAlerta.setForeground(colorTexto);
+        labelAlerta.setText("No se encontro el codigo, desea crear un nuevo producto?");
+        labelAlerta.setIcon(new ImageIcon("src/imagenes/advertencia_icono.png"));
+        
+        JDialog alerta = new JDialog();
+        alerta.setModal(true);
+        alerta.setTitle("No se encontro codigo");
+        alerta.getContentPane().setLayout(new GridBagLayout());
+        alerta.getContentPane().setBackground(colorFondo);
+        
+        alerta.add(labelAlerta);
+        alerta.pack();
+        alerta.setVisible(true);
     }
 }

@@ -22,13 +22,13 @@ import javax.swing.border.EmptyBorder;
  */
 public class VistaPrincipal extends JFrame {
 
-    JLabel labelBienvenida;
-    JButton botonAgregarInventario;
-    JButton botonBuscarProducto;
-    JButton botonModificarInventario;
-    JButton botonVerInventario;
-    Color colorFondo = Color.DARK_GRAY;
-    Color colorTexto = Color.WHITE;
+    public JLabel labelBienvenida;
+    public JButton botonAgregarInventario;
+    public JButton botonBuscarProducto;
+    public JButton botonModificarInventario;
+    public JButton botonVerInventario;
+    public Color colorFondo = Color.DARK_GRAY;
+    public Color colorTexto = Color.WHITE;
 
     public VistaPrincipal() {
 
