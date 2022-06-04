@@ -19,8 +19,8 @@ public class Reto5 {
     public static void main(String[] args) {
         // TODO code application logic here
         VistaBusquedaProducto vent = new VistaBusquedaProducto();
-//        VistaPrincipal vent2 = new VistaPrincipal();
-//        vent2.iniciar();
+        VistaPrincipal vent2 = new VistaPrincipal();
+        vent2.iniciar();
         vent.iniciar();
     }
     

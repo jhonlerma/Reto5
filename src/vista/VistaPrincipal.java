@@ -28,6 +28,7 @@ public class VistaPrincipal extends JFrame {
     public JButton botonModificarInventario;
     public JButton botonVerInventario;
     public Color colorFondo = Color.DARK_GRAY;
+    public Color colorBoton = new Color(33, 150, 243);
     public Color colorTexto = Color.WHITE;
 
     public VistaPrincipal() {
@@ -35,7 +36,7 @@ public class VistaPrincipal extends JFrame {
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setLocation(1000, 0);
+        setLocation(500, 0);
         inicializarComponentes();
     }
 
@@ -62,28 +63,28 @@ public class VistaPrincipal extends JFrame {
         panel.add(labelBienvenida, bagConstraints);
 
         botonAgregarInventario = new JButton("Agregar productos a inventario");
-        botonAgregarInventario.setBackground(colorFondo);
+        botonAgregarInventario.setBackground(colorBoton);
         botonAgregarInventario.setForeground(colorTexto);
         botonAgregarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonAgregarInventario.setIcon(new ImageIcon("src/imagenes/agregar_icono.png"));
         panel.add(botonAgregarInventario, bagConstraints);
 
         botonBuscarProducto = new JButton("Buscar producto por codigo");
-        botonBuscarProducto.setBackground(colorFondo);
+        botonBuscarProducto.setBackground(colorBoton);
         botonBuscarProducto.setForeground(colorTexto);
         botonBuscarProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonBuscarProducto.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
         panel.add(botonBuscarProducto, bagConstraints);
 
         botonModificarInventario = new JButton("Modificar inventario");
-        botonModificarInventario.setBackground(colorFondo);
+        botonModificarInventario.setBackground(colorBoton);
         botonModificarInventario.setForeground(colorTexto);
         botonModificarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonModificarInventario.setIcon(new ImageIcon("src/imagenes/modificar_icono.png"));
         panel.add(botonModificarInventario, bagConstraints);
 
         botonVerInventario = new JButton("Ver inventario");
-        botonVerInventario.setBackground(colorFondo);
+        botonVerInventario.setBackground(colorBoton);
         botonVerInventario.setForeground(colorTexto);
         botonVerInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonVerInventario.setIcon(new ImageIcon("src/imagenes/listar_icono.png"));
