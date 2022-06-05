@@ -32,7 +32,7 @@ public class BaseDatos {
             System.out.println("Error: " + e);
         }
     }
-    public void abrirConexion() {
+    public Connection abrirConexion() {
         String db = mispropiedades.getProperty("database");
         String ipLocal = mispropiedades.getProperty("IPLocal");
         String username = mispropiedades.getProperty("usuario");
@@ -43,10 +43,13 @@ public class BaseDatos {
             conexion = DriverManager.getConnection(dbURL, username, password);
             if (conexion != null) {
                 System.out.println("Conectado");
+                return conexion;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return null;
         }
+        return null;
     }
     
     public void closeConexion(){
@@ -65,7 +68,7 @@ public class BaseDatos {
         String sql = "SELECT * FROM Clientes";
         try {
             //Ejecución de la consulta
-            ps = conexion.prepareStatement(sql);
+            ps = conexion.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = ps.executeQuery();
         } catch (SQLException e) {
             System.out.println("Problema consulta en la base de datos");

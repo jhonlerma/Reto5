@@ -1,8 +1,9 @@
 package reto5;
 
+import javax.swing.JFrame;
 import vista.BusquedaProducto;
-import vista.ModificarInventario;
 import vista.Principal;
+import vista.TablaProductos;
 
 /**
  *
@@ -14,15 +15,16 @@ public class Reto5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         modelo.BaseDatos conn = new modelo.BaseDatos();
         conn.abrirConexion();
-                
+
         // TODO code application logic here
-        ModificarInventario ventena = new ModificarInventario();
-        BusquedaProducto vent = new BusquedaProducto();
-        Principal vent2 = new Principal();
-        
+        TablaProductos tabla = new TablaProductos();
+        tabla.iniciar();
+//        BusquedaProducto vent = new BusquedaProducto();
+//        Principal vent2 = new Principal();
+
     }
-    
+
 }
