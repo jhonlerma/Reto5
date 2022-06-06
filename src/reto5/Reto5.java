@@ -1,10 +1,9 @@
 package reto5;
 
 
-import javax.swing.JFrame;
 import vista.TablaProductos;
 import controlador.ControladorPrincipal;
-import javax.swing.JComponent;
+import controlador.ControladorTablaProductos;
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
