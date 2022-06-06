@@ -31,7 +31,7 @@ public class Reto5 {
         VistaBusquedaProducto vent2 = new VistaBusquedaProducto();
         VistaDialogo vent3 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
 //        ControladorPrincipal contrp = new ControladorPrincipal(vent, vent2, vent3);
-        ControladorTablaProductos controlador  = new ControladorTablaProductos(tabla, vent);
+        ControladorTablaProductos controlador  = new ControladorTablaProductos(tabla, vent,vent3);
     }
 
 }

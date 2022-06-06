@@ -126,4 +126,8 @@ public class VistaDialogo {
         alerta.setVisible(true);
     }
 
+    public void mostrar(int TIPO_ADVERTENCIA, String debe_seleccionar_una_fila) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
