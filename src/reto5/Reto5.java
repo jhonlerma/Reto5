@@ -4,6 +4,7 @@
  */
 package reto5;
 
+import controlador.ControladorPrincipal;
 import javax.swing.JComponent;
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
@@ -20,12 +21,14 @@ public class Reto5 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        VistaBusquedaProducto vent = new VistaBusquedaProducto();
-        VistaPrincipal vent2 = new VistaPrincipal();
+        
+        VistaPrincipal vent = new VistaPrincipal();
+        VistaBusquedaProducto vent2 = new VistaBusquedaProducto();
         VistaDialogo vent3 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
-        vent2.iniciar();
-        vent.iniciar();
-        vent3.mostrar("No se encuentra Codigo", "<html>No se encuentra el codigo.<br> Desea usted crear un nuevo producto?</html>");
+        ControladorPrincipal contrp = new ControladorPrincipal(vent, vent2, vent3);
+       
+
+        
         
     }
     

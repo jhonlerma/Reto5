@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class VistaPrincipal extends JFrame {
 
+    public JPanel panel;
     public JLabel labelBienvenida;
     public JButton botonAgregarInventario;
     public JButton botonBuscarProducto;
@@ -42,7 +43,7 @@ public class VistaPrincipal extends JFrame {
 
     private void inicializarComponentes() {
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBorder(new EmptyBorder(new Insets(20, 0, 24, 0)));
         panel.setBackground(colorFondo);
@@ -67,6 +68,7 @@ public class VistaPrincipal extends JFrame {
         botonAgregarInventario.setForeground(colorTexto);
         botonAgregarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonAgregarInventario.setIcon(new ImageIcon("src/imagenes/agregar_icono.png"));
+        botonAgregarInventario.setActionCommand("ABRIR_AGREGAR_INVENTARIO");
         panel.add(botonAgregarInventario, bagConstraints);
 
         botonBuscarProducto = new JButton("Buscar producto por codigo");
@@ -74,6 +76,7 @@ public class VistaPrincipal extends JFrame {
         botonBuscarProducto.setForeground(colorTexto);
         botonBuscarProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonBuscarProducto.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        botonBuscarProducto.setActionCommand("ABRIR_BUSQUEDA_PRODUCTO");
         panel.add(botonBuscarProducto, bagConstraints);
 
         botonModificarInventario = new JButton("Modificar inventario");
@@ -81,6 +84,7 @@ public class VistaPrincipal extends JFrame {
         botonModificarInventario.setForeground(colorTexto);
         botonModificarInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonModificarInventario.setIcon(new ImageIcon("src/imagenes/modificar_icono.png"));
+        botonModificarInventario.setActionCommand("ABRIR_MODIFICAR_INVENTARIO");
         panel.add(botonModificarInventario, bagConstraints);
 
         botonVerInventario = new JButton("Ver inventario");
@@ -88,6 +92,7 @@ public class VistaPrincipal extends JFrame {
         botonVerInventario.setForeground(colorTexto);
         botonVerInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonVerInventario.setIcon(new ImageIcon("src/imagenes/listar_icono.png"));
+        botonVerInventario.setActionCommand("ABRIR_VER_INVENTARIO");
         panel.add(botonVerInventario, bagConstraints);
 
         this.add(panel);
