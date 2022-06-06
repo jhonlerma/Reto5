@@ -4,7 +4,11 @@
  */
 package reto5;
 
-import vistas.BusquedaProducto;
+import controlador.ControladorPrincipal;
+import javax.swing.JComponent;
+import vista.VistaBusquedaProducto;
+import vista.VistaDialogo;
+import vista.VistaPrincipal;
 
 /**
  *
@@ -18,7 +22,14 @@ public class Reto5 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        BusquedaProducto vent = new BusquedaProducto();
+        VistaPrincipal vent = new VistaPrincipal();
+        VistaBusquedaProducto vent2 = new VistaBusquedaProducto();
+        VistaDialogo vent3 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
+        ControladorPrincipal contrp = new ControladorPrincipal(vent, vent2, vent3);
+       
+
+        
+        
     }
     
 }
