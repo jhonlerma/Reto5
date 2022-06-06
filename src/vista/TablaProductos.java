@@ -15,6 +15,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,7 +46,7 @@ public class TablaProductos extends JFrame {
     public Color colorAceptar = new Color(0, 200, 83);
     public Color colorCancelar = new Color(229, 57, 53);
     
-    private JComboBox nombreTablas;
+//    private JComboBox nombreTablas;
     private JLabel labelInventario;
 
     private JLabel labelDatos1;
@@ -250,10 +251,7 @@ public class TablaProductos extends JFrame {
         panel.add(Box.createHorizontalStrut(100), bagConstraints);
         
         botonGuardar = new JButton("Guardar");
-        botonGuardar.setBackground(colorAceptar);
-        botonGuardar.setForeground(colorTexto);
-        botonGuardar.setFont(new Font("Sanserif", Font.BOLD, 14));
-        botonGuardar.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        customButton(botonGuardar, colorBoton, "guardar_icono.png");
         bagConstraints.weighty = 1;
         bagConstraints.gridx = 4;
         bagConstraints.gridy = 7;
@@ -274,10 +272,8 @@ public class TablaProductos extends JFrame {
         panel.add(Box.createHorizontalStrut(100), bagConstraints);
 
         botonvolver = new JButton("Volver");
-        botonvolver.setBackground(colorBoton);
-        botonvolver.setForeground(colorTexto);
-        botonvolver.setFont(new Font("Sanserif", Font.BOLD, 14));
-        botonvolver.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        customButton(botonvolver, colorBoton, "volver_icono.png");
+        botonvolver.setActionCommand("VOLVER");
         bagConstraints.gridx = 2;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
@@ -285,10 +281,7 @@ public class TablaProductos extends JFrame {
         panel.add(botonvolver, bagConstraints);
 
         botonEditar = new JButton("Editar");
-        botonEditar.setBackground(colorBoton);
-        botonEditar.setForeground(colorTexto);
-        botonEditar.setFont(new Font("Sanserif", Font.BOLD, 14));
-        botonEditar.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        customButton(botonEditar, colorBoton, "modificar_icono.png");
         bagConstraints.gridx = 3;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
@@ -296,9 +289,7 @@ public class TablaProductos extends JFrame {
         panel.add(botonEditar, bagConstraints);
 
         botonEliminar = new JButton("Eliminar");
-        botonEliminar.setBackground(colorCancelar);
-        botonEliminar.setForeground(colorTexto);
-        botonEliminar.setFont(new Font("Sanserif", Font.BOLD, 14));
+        customButton(botonEliminar,colorCancelar, "eliminar_icono.png");
         bagConstraints.gridx = 4;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
@@ -313,10 +304,22 @@ public class TablaProductos extends JFrame {
         nombreLabel.setForeground(colorTexto);
         nombreLabel.setFont(new Font("Sanserif", Font.BOLD, 14));
     }
+    
+    public void customButton(JButton nombreBoton , Color colorBoton, String nombreIcono){
+        nombreBoton.setBackground(colorBoton);
+        nombreBoton.setForeground(colorTexto);
+        nombreBoton.setFont(new Font("Sanserif", Font.BOLD, 14));
+        nombreBoton.setIcon(new ImageIcon("src/imagenes/"+ nombreIcono));
+    }
 
     public void iniciar() {
         pack();
         setVisible(true);
+    }
+    
+    public void cerrar(){
+        pack();
+        setVisible(false);
     }
 
 }
