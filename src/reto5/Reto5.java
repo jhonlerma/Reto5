@@ -1,5 +1,6 @@
 package reto5;
 
+import controlador.ControladorTablaProductos;
 import javax.swing.JFrame;
 import vista.BusquedaProducto;
 import vista.Principal;
@@ -22,6 +23,7 @@ public class Reto5 {
         // TODO code application logic here
         TablaProductos tabla = new TablaProductos();
         tabla.iniciar();
+        ControladorTablaProductos controlador  = new ControladorTablaProductos();
 //        BusquedaProducto vent = new BusquedaProducto();
 //        Principal vent2 = new Principal();
 
