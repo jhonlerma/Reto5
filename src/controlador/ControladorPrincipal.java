@@ -7,7 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import vista.TablaProductos;
+import vista.VistaTablaProductos;
 import vista.VistaAgregarInventario;
 import vista.VistaPrincipal;
 import vista.VistaBusquedaProducto;
@@ -21,7 +21,7 @@ public class ControladorPrincipal implements ActionListener {
 
     VistaPrincipal vistaPrincipal;
     VistaBusquedaProducto vistaBusquedaProducto;
-    TablaProductos tablaProductos;
+    VistaTablaProductos tablaProductos;
     VistaAgregarInventario vistaAgregarInventario;
     VistaDialogo vistaDialogo;
 
@@ -29,7 +29,7 @@ public class ControladorPrincipal implements ActionListener {
             VistaPrincipal pVistaPrincipal,
             VistaAgregarInventario pVistaAgregarInventario,
             VistaBusquedaProducto pVistaBusquedaProducto,
-            TablaProductos pTablaProductos,
+            VistaTablaProductos pTablaProductos,
             VistaDialogo pVistaDialogo
     ) {
         vistaPrincipal = pVistaPrincipal;
