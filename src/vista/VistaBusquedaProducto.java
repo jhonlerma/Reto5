@@ -143,6 +143,7 @@ public class VistaBusquedaProducto extends JFrame {
 
     public void iniciar() {
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

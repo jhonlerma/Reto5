@@ -217,6 +217,7 @@ public class VistaAgregarInventario extends JFrame {
 
     public void iniciar() {
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

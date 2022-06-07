@@ -87,6 +87,7 @@ public class VistaDialogo {
         botonAceptar.setBackground(colorAceptar);
         botonAceptar.setText("Aceptar");
         botonAceptar.setIcon(new ImageIcon("src/imagenes/aceptar_icono.png"));
+        botonAceptar.setActionCommand("ACEPTAR_DIALOGO");
         bagConstraints.fill = GridBagConstraints.HORIZONTAL;
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
         bagConstraints.weightx = 1;
@@ -104,6 +105,7 @@ public class VistaDialogo {
             botonCancelar.setBackground(colorCancelar);
             botonCancelar.setText("Cancelar");
             botonCancelar.setIcon(new ImageIcon("src/imagenes/cancelar_icono.png"));
+            botonCancelar.setActionCommand("CANCELAR_DIALOGO");
             bagConstraints.fill = GridBagConstraints.HORIZONTAL;
             bagConstraints.anchor = GridBagConstraints.PAGE_START;
             bagConstraints.weightx = 1;
@@ -123,7 +125,12 @@ public class VistaDialogo {
         alerta.setTitle(titulo);
         labelAlerta.setText(mensaje);
         alerta.pack();
+        alerta.setLocationRelativeTo(null);
         alerta.setVisible(true);
+    }
+    
+    public void cerrar(){
+        alerta.dispose();
     }
 
 }
