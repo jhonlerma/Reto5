@@ -2,7 +2,7 @@ package reto5;
 
 
 import javax.swing.JFrame;
-import vista.TablaProductos;
+import vista.VistaTablaProductos;
 import controlador.ControladorPrincipal;
 import controlador.ControladorTablaProductos;
 import javax.swing.JComponent;
@@ -26,7 +26,7 @@ public class Reto5 {
         conn.abrirConexion();
 
         // TODO code application logic here
-        TablaProductos tabla = new TablaProductos();
+        VistaTablaProductos tabla = new VistaTablaProductos();
         VistaPrincipal vent = new VistaPrincipal();
         VistaBusquedaProducto vent2 = new VistaBusquedaProducto();
         VistaDialogo vent3 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
