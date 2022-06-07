@@ -26,7 +26,7 @@ public class ControladorAgregarInventario implements ActionListener{
             VistaDialogo pvVistaDialogo
     ) {
         
-        vistaAgregarInventario = pVistaAgregarInventario;
+        vistaAgregarInventario = pVistaAgregarInventario;//para ver cambio XD
         tablaProductos = pTablaProductos;
         vistaDialogo = pvVistaDialogo;
         agregarListeners();
