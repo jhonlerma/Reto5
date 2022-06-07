@@ -29,7 +29,6 @@ public class ControladorTablaProductos implements ActionListener {
         vistaTablaProductos = pVistaProducto;
         vistaPrincipal = pVistaPrincipal;
         vistaDialogo = PVistaDialogo;
-        vistaTablaProductos.iniciar();
 
         agregarListeners();
     }
