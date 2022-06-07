@@ -37,7 +37,7 @@ public class Reto5 {
         VistaDialogo dialogo1 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
         ControladorDialogo controladorDialogo =new ControladorDialogo(dialogo1);
         ControladorBusquedaProducto controladorBusquedaProducto = new ControladorBusquedaProducto(busquedaProducto,agregarInventario, dialogo1);
-        ControladorAgregarInventario controladorAgregarInventario = new ControladorAgregarInventario(agregarInventario);
+        ControladorAgregarInventario controladorAgregarInventario = new ControladorAgregarInventario(agregarInventario, tabla, dialogo1);
         ControladorPrincipal contrp = new ControladorPrincipal(principal, agregarInventario, busquedaProducto, tabla, dialogo1);
         
     }

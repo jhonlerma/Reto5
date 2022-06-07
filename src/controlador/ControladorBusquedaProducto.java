@@ -56,7 +56,7 @@ public class ControladorBusquedaProducto implements ActionListener{
                    vistaAgregarInventario.textoCodigo.setText(vistaBusquedaProducto.textoBuscar.getText());
                    vistaBusquedaProducto.cerrar();
                 }
-                System.out.println(resultado);
+
             }
         }else if (e.getActionCommand().equals("VOLVER")) {
             vistaBusquedaProducto.padre.mostrar();
