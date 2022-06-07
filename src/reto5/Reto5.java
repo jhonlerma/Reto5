@@ -40,8 +40,7 @@ public class Reto5 {
         ControladorBusquedaProducto controladorBusquedaProducto = new ControladorBusquedaProducto(busquedaProducto,agregarInventario, dialogo1);
         ControladorAgregarInventario controladorAgregarInventario = new ControladorAgregarInventario(agregarInventario, tabla, dialogo1);
         ControladorPrincipal contrp = new ControladorPrincipal(principal, agregarInventario, busquedaProducto, tabla, dialogo1);
-        ControladorTablaProductos controlador  = new ControladorTablaProductos(tabla,principal, dialogo1);
-        
-    }
+        ControladorTablaProductos controlador  = new ControladorTablaProductos(tabla, principal, dialogo1);
+
 
 }

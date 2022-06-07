@@ -21,7 +21,7 @@ public class ControladorPrincipal implements ActionListener {
 
     VistaPrincipal vistaPrincipal;
     VistaBusquedaProducto vistaBusquedaProducto;
-    VistaTablaProductos tablaProductos;
+    VistaTablaProductos vistaTablaProductos;
     VistaAgregarInventario vistaAgregarInventario;
     VistaDialogo vistaDialogo;
 
@@ -29,13 +29,13 @@ public class ControladorPrincipal implements ActionListener {
             VistaPrincipal pVistaPrincipal,
             VistaAgregarInventario pVistaAgregarInventario,
             VistaBusquedaProducto pVistaBusquedaProducto,
-            VistaTablaProductos pTablaProductos,
+            VistaTablaProductos pVistaTablaProductos,
             VistaDialogo pVistaDialogo
     ) {
         vistaPrincipal = pVistaPrincipal;
         vistaAgregarInventario = pVistaAgregarInventario;
         vistaBusquedaProducto = pVistaBusquedaProducto;
-        tablaProductos = pTablaProductos;
+        vistaTablaProductos = pVistaTablaProductos;
         vistaDialogo = pVistaDialogo;
         agregarListeners();
         vistaPrincipal.iniciar();
@@ -62,7 +62,7 @@ public class ControladorPrincipal implements ActionListener {
 
         } else if (e.getActionCommand().equals("ABRIR_MODIFICAR_INVENTARIO")) {
 
-            tablaProductos.iniciar();
+            vistaTablaProductos.iniciar();
             vistaPrincipal.ocultar();
 
         } 
