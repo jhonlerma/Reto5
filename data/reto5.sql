@@ -4,6 +4,7 @@ USE FerreteriaElVagabundo;
 CREATE TABLE CategoriaProducto(
 id_categoriaProducto int primary key NOT NULL,
 nomb_categoriaProducto varchar(40) NOT NULL
+
 );
 
 CREATE TABLE Productos(
@@ -12,13 +13,8 @@ nomb_productos varchar(40) NOT NULL,
 valor_und_productos double NOT NULL,
 valor_venta_productos double NOT NULL,
 cantidad_productos int NOT NULL,
-id_categoriaProductoFK int NOT NULL,
-FOREIGN KEY(id_categoriaProductoFK) REFERENCES CategoriaProducto(id_categoriaProducto)
+id_categoriaProductoFk int NOT NULL
 );
-
-INSERT INTO CategoriaProducto VALUES(	1,	"Materiales");
-INSERT INTO CategoriaProducto VALUES(	2,	"Maquinaria");
-INSERT INTO CategoriaProducto VALUES(	3,	"Servicios"	);
 
 INSERT INTO Productos VALUES(	1,	"la plastica",	107293,	134116.25,	1,	"1"	);
 INSERT INTO Productos VALUES(	2,	"Acciaio",	352365,	440456.25,	2,	"1"	);
@@ -67,4 +63,8 @@ INSERT INTO Productos VALUES(	44,	"calderero",	2200310,	2750387.5,	44,	"3"	);
 INSERT INTO Productos VALUES(	45,	"Trabajador",	1407236,	1759045,	45,	"3"	);
 INSERT INTO Productos VALUES(	46,	"impermeabilización",	8907970,	11134962.5,	46,	"3"	);
 INSERT INTO Productos VALUES(	47,	"aire acondicionado",	9002367,	11252958.75,	47,	"3"	);
+
+INSERT INTO CategoriaProducto VALUES(	1,	"Materiales");
+INSERT INTO CategoriaProducto VALUES(	2,	"Maquinaria");
+INSERT INTO CategoriaProducto VALUES(	3,	"Servicios"	);
 
