@@ -13,6 +13,7 @@ import vista.VistaTablaProductos;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
 
+
 /**
  *
  * @author Jimmy
@@ -30,6 +31,7 @@ public class ControladorTablaProductos implements ActionListener {
         vistaPrincipal = pVistaPrincipal;
         vistaDialogo = PVistaDialogo;
         vistaTablaProductos.iniciar();
+
         agregarListeners();
     }
 
