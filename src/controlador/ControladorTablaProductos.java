@@ -77,9 +77,15 @@ public class ControladorTablaProductos implements ActionListener {
 
         } else if (e.getActionCommand().equals("ELIMINAR")) {
             System.out.println("Botón Eliminar");
+            db.abrirConexion();
+            int fila = vistaTablaProductos.tabla.getSelectedRow();
+            int codigoProducto =  Integer.parseInt( vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
+            db.EliminarProducto(codigoProducto);
+            JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            
+            
 
         } else if (e.getActionCommand().equals("GUARDAR")) {
-            int codigo = 0;
             String nombreProducto = "";
             double valorUnidad = 0.0;
             double valorVenta = 0.0;
@@ -94,15 +100,13 @@ public class ControladorTablaProductos implements ActionListener {
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Debe Seleccionar una fila", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 db.abrirConexion();
-                codigo = Integer.parseInt(vistaTablaProductos.txtDatos1.getText());
                 nombreProducto = vistaTablaProductos.txtDatos2.getText();
                 valorUnidad = Double.parseDouble(vistaTablaProductos.txtDatos3.getText());
                 valorVenta = Double.parseDouble(vistaTablaProductos.txtDatos4.getText());
                 cantidad = Integer.parseInt(vistaTablaProductos.txtDatos5.getText());
                 categoria = vistaTablaProductos.txtDatos6.getText();
-                idcodigo = (int) vistaTablaProductos.tabla.getValueAt(fila, 0);
-
-                System.out.println(codigo);
+                idcodigo = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
+                
                 System.out.println(nombreProducto);
                 System.out.println(valorUnidad);
                 System.out.println(valorVenta);

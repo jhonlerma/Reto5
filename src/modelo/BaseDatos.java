@@ -79,10 +79,7 @@ public class BaseDatos {
 
     public void ActualizarInventario(String nombreProducto, double valorUnidad, double valorVenta, int cantidad, int categoria, int idcodigo) {
         PreparedStatement ps;
-        
-        String sql = "DELETE FROM Productos WHERE codigo_productos = ?;      "
-                + " SET nomb_productos =?, valor_und_productos = ?, valor_venta_productos = ?, cantidad_productos = ?, id_categoriaProductoFK = ? WHERE codigo_productos = ? and id_categoriaProductoFK = id_categoriaProducto ";
-        
+        String sql = "UPDATE Productos SET nomb_productos = ?, valor_und_productos = ?, valor_venta_productos = ?, cantidad_productos = ?, id_categoriaProductoFK = ? WHERE codigo_productos = ?";
         try {
             ps = conexion.prepareStatement(sql);
             ps.setString(1, nombreProducto);
@@ -92,8 +89,29 @@ public class BaseDatos {
             ps.setInt(5, categoria);
             ps.setInt(6, idcodigo);
             ps.executeUpdate();
+            ps.close();
+            conexion.close();
         } catch (SQLException ex) {
             System.out.println("Problema consulta Actualizar en la base de datos" + ex);
         }
     }
+    
+    public void EliminarProducto(int codigoProducto){
+        PreparedStatement ps;
+        String sql = "DELETE FROM Productos WHERE codigo_productos = ?";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, codigoProducto);
+            ps.executeUpdate();
+            ps.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+           
+            
+    
+    }
 }
+
