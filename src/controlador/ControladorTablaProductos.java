@@ -83,8 +83,6 @@ public class ControladorTablaProductos implements ActionListener {
             db.EliminarProducto(codigoProducto);
             JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             
-            
-
         } else if (e.getActionCommand().equals("GUARDAR")) {
             String nombreProducto = "";
             double valorUnidad = 0.0;
