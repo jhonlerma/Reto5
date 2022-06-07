@@ -1,12 +1,14 @@
 package reto5;
 
 
+import javax.swing.JFrame;
+import vista.VistaTablaProductos;
+import controlador.ControladorPrincipal;
+import controlador.ControladorTablaProductos;
+import javax.swing.JComponent;
 import controlador.ControladorAgregarInventario;
 import controlador.ControladorBusquedaProducto;
 import controlador.ControladorDialogo;
-import vista.TablaProductos;
-import controlador.ControladorPrincipal;
-import controlador.ControladorTablaProductos;
 import vista.VistaAgregarInventario;
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
@@ -28,9 +30,9 @@ public class Reto5 {
         conn.abrirConexion();
 
         // TODO code application logic here
-        TablaProductos tabla = new TablaProductos();
-        ControladorTablaProductos controlador  = new ControladorTablaProductos();
 
+        VistaTablaProductos tabla = new VistaTablaProductos();
+        ControladorTablaProductos controlador  = new ControladorTablaProductos();
         VistaPrincipal principal = new VistaPrincipal();
         VistaAgregarInventario agregarInventario = new VistaAgregarInventario(principal);
         VistaBusquedaProducto busquedaProducto = new VistaBusquedaProducto(principal);
