@@ -11,6 +11,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -31,17 +32,20 @@ public class VistaBusquedaProducto extends JFrame {
     public Color colorAceptar = new Color(0, 200, 83);
     public Color colorCancelar = new Color(229, 57, 53);
 
+    public VistaPrincipal padre;
+    public JLabel labelPrincipal;
     public JButton botonBuscar;
     public JLabel labelBuscar;
     public JTextField textoBuscar;
     public JLabel labelProducto;
+    public JButton botonVolver;
 
-    public VistaBusquedaProducto() {
+    public VistaBusquedaProducto(VistaPrincipal pPadre) {
 
+        padre = pPadre;
         setTitle("Inventario Ferreteria El Vagabundo");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setResizable(false);
-        setLocation(1000, 0);
         inicializarComponentes();
     }
 
@@ -54,22 +58,37 @@ public class VistaBusquedaProducto extends JFrame {
         GridBagConstraints bagConstraints = new GridBagConstraints();
         bagConstraints.fill = GridBagConstraints.HORIZONTAL;
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
-        bagConstraints.weightx = 1;
+        bagConstraints.insets = new Insets(4, 8, 4, 8);
         bagConstraints.ipady = 12;
-        bagConstraints.insets = new Insets(0, 24, 8, 24);
+        bagConstraints.weighty = 1;
+        bagConstraints.weightx = 1;
+
+        labelPrincipal = new JLabel("<html><h3>Buscar producto por codigo</h3></html>");
+        labelPrincipal.setIcon(new ImageIcon("src/imagenes/vagabundo_buscar_icono_128.png"));
+        labelPrincipal.setBackground(colorFondo);
+        labelPrincipal.setForeground(colorTexto);
         bagConstraints.gridx = 0;
+        bagConstraints.gridy = 0;
         bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 2;
+        panel.add(labelPrincipal, bagConstraints);
 
         labelBuscar = new JLabel("Codigo");
         labelBuscar.setBackground(colorFondo);
         labelBuscar.setForeground(colorTexto);
         labelBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
-        labelBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
-
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 1;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 2;
         panel.add(labelBuscar, bagConstraints);
 
         textoBuscar = new JTextField();
         textoBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 2;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 2;
         panel.add(textoBuscar, bagConstraints);
 
         botonBuscar = new JButton("Buscar");
@@ -77,19 +96,59 @@ public class VistaBusquedaProducto extends JFrame {
         botonBuscar.setForeground(colorTexto);
         botonBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonBuscar.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        botonBuscar.setActionCommand("BUSCAR_PRODUCTO");
+        bagConstraints.gridx = 1;
+        bagConstraints.gridy = 3;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
         panel.add(botonBuscar, bagConstraints);
+        
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 3;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        panel.add(Box.createHorizontalStrut(50), bagConstraints);
+
 
         labelProducto = new JLabel("");
         labelProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
-        panel.add(labelProducto, bagConstraints);
         labelProducto.setPreferredSize(new Dimension(400, 200));
         labelProducto.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 4;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 2;
+        panel.add(labelProducto, bagConstraints);
+
+        botonVolver = new JButton("Volver");
+        botonVolver.setBackground(colorBoton);
+        botonVolver.setForeground(colorTexto);
+        botonVolver.setFont(new Font("Sanserif", Font.BOLD, 14));
+        botonVolver.setActionCommand("VOLVER");
+        bagConstraints.gridx = 1;
+        bagConstraints.gridy = 5;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        botonVolver.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
+        panel.add(botonVolver, bagConstraints);
+        
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 5;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        panel.add(Box.createHorizontalStrut(50), bagConstraints);
+
         this.add(panel);
     }
 
     public void iniciar() {
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public void cerrar() {
+        dispose();
     }
 
 }

@@ -7,9 +7,11 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import vista.TablaProductos;
+import vista.VistaAgregarInventario;
+import vista.VistaPrincipal;
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
-import vista.VistaPrincipal;
 
 /**
  *
@@ -19,11 +21,21 @@ public class ControladorPrincipal implements ActionListener {
 
     VistaPrincipal vistaPrincipal;
     VistaBusquedaProducto vistaBusquedaProducto;
+    TablaProductos tablaProductos;
+    VistaAgregarInventario vistaAgregarInventario;
     VistaDialogo vistaDialogo;
 
-    public ControladorPrincipal(VistaPrincipal pVistaPrincipal, VistaBusquedaProducto pVistaBusquedaProducto, VistaDialogo pVistaDialogo) {
+    public ControladorPrincipal(
+            VistaPrincipal pVistaPrincipal,
+            VistaAgregarInventario pVistaAgregarInventario,
+            VistaBusquedaProducto pVistaBusquedaProducto,
+            TablaProductos pTablaProductos,
+            VistaDialogo pVistaDialogo
+    ) {
         vistaPrincipal = pVistaPrincipal;
+        vistaAgregarInventario = pVistaAgregarInventario;
         vistaBusquedaProducto = pVistaBusquedaProducto;
+        tablaProductos = pTablaProductos;
         vistaDialogo = pVistaDialogo;
         agregarListeners();
         vistaPrincipal.iniciar();
@@ -33,29 +45,28 @@ public class ControladorPrincipal implements ActionListener {
         vistaPrincipal.botonAgregarInventario.addActionListener(this);
         vistaPrincipal.botonBuscarProducto.addActionListener(this);
         vistaPrincipal.botonModificarInventario.addActionListener(this);
-        vistaPrincipal.botonVerInventario.addActionListener(this);   
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("ABRIR_AGREGAR_INVENTARIO")) {
-            
-            JOptionPane.showMessageDialog(null, e.getActionCommand());
-            
-        }else if (e.getActionCommand().equals("ABRIR_BUSQUEDA_PRODUCTO")){
-            
+
+            vistaAgregarInventario.iniciar();
+            vistaPrincipal.ocultar();
+
+        } else if (e.getActionCommand().equals("ABRIR_BUSQUEDA_PRODUCTO")) {
+
             vistaBusquedaProducto.iniciar();
-            
-        }else if (e.getActionCommand().equals("ABRIR_MODIFICAR_INVENTARIO")){
-            
-            JOptionPane.showMessageDialog(null, e.getActionCommand());
-            
-        }else if (e.getActionCommand().equals("ABRIR_VER_INVENTARIO")){
-            
-            JOptionPane.showMessageDialog(null, e.getActionCommand());
-            
-        }
+            vistaPrincipal.ocultar();
+
+        } else if (e.getActionCommand().equals("ABRIR_MODIFICAR_INVENTARIO")) {
+
+            tablaProductos.iniciar();
+            vistaPrincipal.ocultar();
+
+        } 
+        
     }
 
 }

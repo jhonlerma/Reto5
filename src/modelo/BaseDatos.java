@@ -65,7 +65,7 @@ public class BaseDatos {
         PreparedStatement ps;
         ResultSet rs = null;
         //modificar consulta ejemplo
-        String sql = "SELECT * FROM Clientes";
+        String sql = "SELECT * FROM Cliente";
         try {
             //Ejecución de la consulta
             ps = conexion.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

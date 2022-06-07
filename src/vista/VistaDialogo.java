@@ -19,7 +19,7 @@ import javax.swing.SwingConstants;
  *
  * @author johne
  */
-public class VistaDialogo {
+public class VistaDialogo extends JDialog{
 
     public static final int TIPO_ADVERTENCIA = 1;
     public static final int TIPO_ERROR = 2;
@@ -30,10 +30,11 @@ public class VistaDialogo {
     public Color colorAceptar = new Color(0, 200, 83);
     public Color colorCancelar = new Color(229, 57, 53);
 
-    public JDialog alerta;
     public JLabel labelAlerta;
-    public JButton botonAceptar = new JButton();
-    public JButton botonCancelar = new JButton();
+    public JButton botonAceptar;
+    public JButton botonCancelar;
+    
+    public boolean resultado;
     
 
     // EL PADRE ES LA INSTNCIA QUE VA A ABRIR LA VENTANA DE DIALOGO, EJEMPLO UNA INSTANCIA DE BUSQUEDAPRODUCTO
@@ -42,13 +43,11 @@ public class VistaDialogo {
     public VistaDialogo(int tipo, boolean cancelar) {
 
         GridBagConstraints bagConstraints = new GridBagConstraints();
-
-        alerta = new JDialog();
-        alerta.setModal(true);
-        alerta.setResizable(false);
-        alerta.setTitle("");
-        alerta.getContentPane().setLayout(new GridBagLayout());
-        alerta.getContentPane().setBackground(colorFondo);
+        setModalityType(JDialog.ModalityType.APPLICATION_MODAL);
+        setResizable(false);
+        setTitle("");
+        getContentPane().setLayout(new GridBagLayout());
+        getContentPane().setBackground(colorFondo);
 
         labelAlerta = new JLabel("");
         labelAlerta.setForeground(colorTexto);
@@ -68,7 +67,7 @@ public class VistaDialogo {
         bagConstraints.gridy = 0;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 3;
-        alerta.add(labelAlerta, bagConstraints);
+        this.add(labelAlerta, bagConstraints);
 
         bagConstraints.fill = GridBagConstraints.HORIZONTAL;
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
@@ -80,13 +79,14 @@ public class VistaDialogo {
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
-        alerta.add(Box.createHorizontalStrut(100), bagConstraints);
+        add(Box.createHorizontalStrut(100), bagConstraints);
 
         botonAceptar = new JButton();
         botonAceptar.setForeground(colorTexto);
         botonAceptar.setBackground(colorAceptar);
         botonAceptar.setText("Aceptar");
         botonAceptar.setIcon(new ImageIcon("src/imagenes/aceptar_icono.png"));
+        botonAceptar.setActionCommand("ACEPTAR_DIALOGO");
         bagConstraints.fill = GridBagConstraints.HORIZONTAL;
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
         bagConstraints.weightx = 1;
@@ -96,7 +96,7 @@ public class VistaDialogo {
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
-        alerta.add(botonAceptar, bagConstraints);
+        this.add(botonAceptar, bagConstraints);
 
         if (cancelar) {
             botonCancelar = new JButton();
@@ -104,6 +104,7 @@ public class VistaDialogo {
             botonCancelar.setBackground(colorCancelar);
             botonCancelar.setText("Cancelar");
             botonCancelar.setIcon(new ImageIcon("src/imagenes/cancelar_icono.png"));
+            botonCancelar.setActionCommand("CANCELAR_DIALOGO");
             bagConstraints.fill = GridBagConstraints.HORIZONTAL;
             bagConstraints.anchor = GridBagConstraints.PAGE_START;
             bagConstraints.weightx = 1;
@@ -114,16 +115,24 @@ public class VistaDialogo {
             bagConstraints.gridy = 1;
             bagConstraints.gridheight = 1;
             bagConstraints.gridwidth = 1;
-            alerta.add(botonCancelar, bagConstraints);
+            add(botonCancelar, bagConstraints);
         }
 
     }
     
-    public void mostrar(String titulo, String mensaje){
-        alerta.setTitle(titulo);
+    public boolean mostrar(String titulo, String mensaje){
+        setTitle(titulo);
         labelAlerta.setText(mensaje);
-        alerta.pack();
-        alerta.setVisible(true);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
+        return resultado;
+    }
+    
+    public void cerrar(){
+        setVisible(false);
+        dispose();
     }
 
 }

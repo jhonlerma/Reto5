@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/USURIO/Documents/NetBeansProjects/Reto5/src/reto5/Reto5.java</file>
-            <file>file:/C:/Users/USURIO/Documents/NetBeansProjects/Reto5/src/vista/ModificarInventario.java</file>
-            <file>file:/C:/Users/USURIO/Documents/NetBeansProjects/Reto5/src/modelo/BaseDatos.java</file>
             <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/reto5/Reto5.java</file>
-            <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/vista/VistaPrincipal.java</file>
+            <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/modelo/BaseDatos.java</file>
             <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/controlador/ControladorPrincipal.java</file>
-            <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/vista/VistaDialogo.java</file>
-            <file>file:/C:/Users/johne/Documents/NetBeansProjects/Reto5/src/vista/VistaBusquedaProducto.java</file>
-
         </group>
     </open-files>
 </project-private>

@@ -1,9 +1,13 @@
 package reto5;
 
 
+import controlador.ControladorAgregarInventario;
+import controlador.ControladorBusquedaProducto;
+import controlador.ControladorDialogo;
 import vista.TablaProductos;
 import controlador.ControladorPrincipal;
 import controlador.ControladorTablaProductos;
+import vista.VistaAgregarInventario;
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
@@ -25,13 +29,17 @@ public class Reto5 {
 
         // TODO code application logic here
         TablaProductos tabla = new TablaProductos();
-        tabla.iniciar();
         ControladorTablaProductos controlador  = new ControladorTablaProductos();
 
-        VistaPrincipal vent = new VistaPrincipal();
-        VistaBusquedaProducto vent2 = new VistaBusquedaProducto();
-        VistaDialogo vent3 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
-        ControladorPrincipal contrp = new ControladorPrincipal(vent, vent2, vent3);
+        VistaPrincipal principal = new VistaPrincipal();
+        VistaAgregarInventario agregarInventario = new VistaAgregarInventario(principal);
+        VistaBusquedaProducto busquedaProducto = new VistaBusquedaProducto(principal);
+        VistaDialogo dialogo1 = new VistaDialogo(VistaDialogo.TIPO_ERROR, true);
+        ControladorDialogo controladorDialogo =new ControladorDialogo(dialogo1);
+        ControladorBusquedaProducto controladorBusquedaProducto = new ControladorBusquedaProducto(busquedaProducto,agregarInventario, dialogo1);
+        ControladorAgregarInventario controladorAgregarInventario = new ControladorAgregarInventario(agregarInventario, tabla, dialogo1);
+        ControladorPrincipal contrp = new ControladorPrincipal(principal, agregarInventario, busquedaProducto, tabla, dialogo1);
+        
     }
 
 }

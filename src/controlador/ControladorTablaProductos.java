@@ -6,7 +6,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import vista.Principal;
+import vista.VistaPrincipal;
 import vista.TablaProductos;
 
 /**
@@ -16,11 +16,11 @@ import vista.TablaProductos;
 public class ControladorTablaProductos implements ActionListener {
 
     private TablaProductos vistaTablaProductos;
-    private Principal vistaprincipal;
+    private VistaPrincipal vistaprincipal;
 
     public ControladorTablaProductos() {
         vistaTablaProductos = new TablaProductos();
-        vistaprincipal = new Principal();
+        vistaprincipal = new VistaPrincipal();
         agregarListeners();
     }
 
