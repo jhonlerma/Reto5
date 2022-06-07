@@ -13,7 +13,6 @@ import vista.VistaTablaProductos;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
 
-
 /**
  *
  * @author Jimmy
@@ -88,7 +87,7 @@ public class ControladorTablaProductos implements ActionListener {
             String categoria = "";
             int idcodigo = 0;
             int idcategoria = 0;
-            
+
             System.out.println("Botón Guardar");
             int fila = vistaTablaProductos.tabla.getSelectedRow();
             if (fila < 0) {
@@ -102,8 +101,7 @@ public class ControladorTablaProductos implements ActionListener {
                 cantidad = Integer.parseInt(vistaTablaProductos.txtDatos5.getText());
                 categoria = vistaTablaProductos.txtDatos6.getText();
                 idcodigo = (int) vistaTablaProductos.tabla.getValueAt(fila, 0);
-                
-                
+
                 System.out.println(codigo);
                 System.out.println(nombreProducto);
                 System.out.println(valorUnidad);
@@ -111,7 +109,7 @@ public class ControladorTablaProductos implements ActionListener {
                 System.out.println(cantidad);
                 System.out.println(categoria);
                 System.out.println(idcodigo);
-                
+
                 if (categoria == "Materiales") {
                     idcategoria = 1;
                     System.out.println(idcategoria);
@@ -124,14 +122,23 @@ public class ControladorTablaProductos implements ActionListener {
                 } else {
                     vistaTablaProductos.txtDatos6.setText(vistaTablaProductos.tabla.getValueAt(fila, 5).toString());
                 }
-                db.ActualizarInventario( nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
+                db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Su información se ha modificado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        }else if(e.getActionCommand().equals("VOLVER_EDITAR")){
+        } else if (e.getActionCommand().equals("VOLVER_EDITAR")) {
             vistaTablaProductos.botonEliminar.setEnabled(true);
+            vistaTablaProductos.botonGuardar.setVisible(false);
+            vistaTablaProductos.botonVolverEditar.setVisible(false);
+            vistaTablaProductos.txtDatos1.setEnabled(false);
+            vistaTablaProductos.txtDatos2.setEnabled(false);
+            vistaTablaProductos.txtDatos3.setEnabled(false);
+            vistaTablaProductos.txtDatos4.setEnabled(false);
+            vistaTablaProductos.txtDatos5.setEnabled(false);
+            vistaTablaProductos.txtDatos6.setEnabled(false);
+
             System.out.println("Botón volver editar");
-        
+
         }
     }
 
