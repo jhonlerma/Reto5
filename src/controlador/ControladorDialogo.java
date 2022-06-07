@@ -29,9 +29,15 @@ public class ControladorDialogo implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("ACEPTAR_DIALOGO")) {
+            
+            vistaDialogo.resultado = true;
             vistaDialogo.cerrar();
+            
         } else if (e.getActionCommand().equals("CANCELAR_DIALOGO")){
+            
+            vistaDialogo.resultado = false;
             vistaDialogo.cerrar();
+            
         }
     }
 }
