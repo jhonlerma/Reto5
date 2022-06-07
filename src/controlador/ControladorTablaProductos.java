@@ -13,7 +13,6 @@ import vista.VistaTablaProductos;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
 
-
 /**
  *
  * @author Jimmy
@@ -78,9 +77,16 @@ public class ControladorTablaProductos implements ActionListener {
 
         } else if (e.getActionCommand().equals("ELIMINAR")) {
             System.out.println("Botón Eliminar");
-
+            int fila = vistaTablaProductos.tabla.getSelectedRow();
+            if (fila < 0) {
+                JOptionPane.showMessageDialog(vistaTablaProductos, "Debe Seleccionar una fila", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                db.abrirConexion();
+                int codigoProducto = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
+                db.EliminarProducto(codigoProducto);
+                JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
         } else if (e.getActionCommand().equals("GUARDAR")) {
-            int codigo = 0;
             String nombreProducto = "";
             double valorUnidad = 0.0;
             double valorVenta = 0.0;
@@ -88,30 +94,27 @@ public class ControladorTablaProductos implements ActionListener {
             String categoria = "";
             int idcodigo = 0;
             int idcategoria = 0;
-            
+
             System.out.println("Botón Guardar");
             int fila = vistaTablaProductos.tabla.getSelectedRow();
             if (fila < 0) {
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Debe Seleccionar una fila", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 db.abrirConexion();
-                codigo = Integer.parseInt(vistaTablaProductos.txtDatos1.getText());
                 nombreProducto = vistaTablaProductos.txtDatos2.getText();
                 valorUnidad = Double.parseDouble(vistaTablaProductos.txtDatos3.getText());
                 valorVenta = Double.parseDouble(vistaTablaProductos.txtDatos4.getText());
                 cantidad = Integer.parseInt(vistaTablaProductos.txtDatos5.getText());
                 categoria = vistaTablaProductos.txtDatos6.getText();
-                idcodigo = (int) vistaTablaProductos.tabla.getValueAt(fila, 0);
-                
-                
-                System.out.println(codigo);
+                idcodigo = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
+
                 System.out.println(nombreProducto);
                 System.out.println(valorUnidad);
                 System.out.println(valorVenta);
                 System.out.println(cantidad);
                 System.out.println(categoria);
                 System.out.println(idcodigo);
-                
+
                 if (categoria == "Materiales") {
                     idcategoria = 1;
                     System.out.println(idcategoria);
@@ -124,14 +127,23 @@ public class ControladorTablaProductos implements ActionListener {
                 } else {
                     vistaTablaProductos.txtDatos6.setText(vistaTablaProductos.tabla.getValueAt(fila, 5).toString());
                 }
-                db.ActualizarInventario( nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
+                db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Su información se ha modificado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
 
-        }else if(e.getActionCommand().equals("VOLVER_EDITAR")){
+        } else if (e.getActionCommand().equals("VOLVER_EDITAR")) {
             vistaTablaProductos.botonEliminar.setEnabled(true);
+            vistaTablaProductos.botonGuardar.setVisible(false);
+            vistaTablaProductos.botonVolverEditar.setVisible(false);
+            vistaTablaProductos.txtDatos1.setEnabled(false);
+            vistaTablaProductos.txtDatos2.setEnabled(false);
+            vistaTablaProductos.txtDatos3.setEnabled(false);
+            vistaTablaProductos.txtDatos4.setEnabled(false);
+            vistaTablaProductos.txtDatos5.setEnabled(false);
+            vistaTablaProductos.txtDatos6.setEnabled(false);
+
             System.out.println("Botón volver editar");
-        
+
         }
     }
 
