@@ -6,6 +6,7 @@ import vista.VistaTablaProductos;
 import controlador.ControladorPrincipal;
 import controlador.ControladorTablaProductos;
 import javax.swing.JComponent;
+
 import vista.VistaBusquedaProducto;
 import vista.VistaDialogo;
 import vista.VistaPrincipal;
