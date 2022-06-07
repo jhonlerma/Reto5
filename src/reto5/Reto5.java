@@ -32,7 +32,6 @@ public class Reto5 {
         // TODO code application logic here
 
         VistaTablaProductos tabla = new VistaTablaProductos();
-        ControladorTablaProductos controlador  = new ControladorTablaProductos();
         VistaPrincipal principal = new VistaPrincipal();
         VistaAgregarInventario agregarInventario = new VistaAgregarInventario(principal);
         VistaBusquedaProducto busquedaProducto = new VistaBusquedaProducto(principal);
@@ -41,7 +40,7 @@ public class Reto5 {
         ControladorBusquedaProducto controladorBusquedaProducto = new ControladorBusquedaProducto(busquedaProducto,agregarInventario, dialogo1);
         ControladorAgregarInventario controladorAgregarInventario = new ControladorAgregarInventario(agregarInventario, tabla, dialogo1);
         ControladorPrincipal contrp = new ControladorPrincipal(principal, agregarInventario, busquedaProducto, tabla, dialogo1);
-        
+        ControladorTablaProductos controlador  = new ControladorTablaProductos(tabla, principal, dialogo1);
     }
 
 }

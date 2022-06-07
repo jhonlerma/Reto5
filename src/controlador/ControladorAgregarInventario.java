@@ -6,7 +6,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import vista.TablaProductos;
+import vista.VistaTablaProductos;
 import vista.VistaAgregarInventario;
 import vista.VistaDialogo;
 
@@ -17,12 +17,12 @@ import vista.VistaDialogo;
 public class ControladorAgregarInventario implements ActionListener{
 
     VistaAgregarInventario vistaAgregarInventario;
-    TablaProductos tablaProductos;
+    VistaTablaProductos tablaProductos;
     VistaDialogo vistaDialogo;
     
     public ControladorAgregarInventario(
             VistaAgregarInventario pVistaAgregarInventario,
-            TablaProductos pTablaProductos,
+            VistaTablaProductos pTablaProductos,
             VistaDialogo pvVistaDialogo
     ) {
         
