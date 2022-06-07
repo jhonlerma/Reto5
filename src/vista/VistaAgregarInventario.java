@@ -5,12 +5,10 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -54,7 +52,6 @@ public class VistaAgregarInventario extends JFrame {
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setResizable(false);
-        setLocation(1000, 0);
         inicializarComponentes();
     }
 

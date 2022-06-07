@@ -37,7 +37,6 @@ public class VistaPrincipal extends JFrame {
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setLocation(500, 0);
         inicializarComponentes();
     }
 

@@ -11,6 +11,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -45,7 +46,6 @@ public class VistaBusquedaProducto extends JFrame {
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setResizable(false);
-        setLocation(1000, 0);
         inicializarComponentes();
     }
 
@@ -97,33 +97,46 @@ public class VistaBusquedaProducto extends JFrame {
         botonBuscar.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonBuscar.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
         botonBuscar.setActionCommand("BUSCAR_PRODUCTO");
+        bagConstraints.gridx = 1;
+        bagConstraints.gridy = 3;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        panel.add(botonBuscar, bagConstraints);
+        
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 3;
         bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 2;
-        panel.add(botonBuscar, bagConstraints);
+        bagConstraints.gridwidth = 1;
+        panel.add(Box.createHorizontalStrut(50), bagConstraints);
+
 
         labelProducto = new JLabel("");
         labelProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
-        panel.add(labelProducto, bagConstraints);
         labelProducto.setPreferredSize(new Dimension(400, 200));
         labelProducto.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        bagConstraints.gridx = 1;
+        bagConstraints.gridx = 0;
         bagConstraints.gridy = 4;
         bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 1;
+        bagConstraints.gridwidth = 2;
+        panel.add(labelProducto, bagConstraints);
 
         botonVolver = new JButton("Volver");
         botonVolver.setBackground(colorBoton);
         botonVolver.setForeground(colorTexto);
         botonVolver.setFont(new Font("Sanserif", Font.BOLD, 14));
         botonVolver.setActionCommand("VOLVER");
-        bagConstraints.gridx = 0;
-        bagConstraints.gridy = 4;
+        bagConstraints.gridx = 1;
+        bagConstraints.gridy = 5;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
         botonVolver.setIcon(new ImageIcon("src/imagenes/buscar_icono.png"));
         panel.add(botonVolver, bagConstraints);
+        
+        bagConstraints.gridx = 0;
+        bagConstraints.gridy = 5;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 1;
+        panel.add(Box.createHorizontalStrut(50), bagConstraints);
 
         this.add(panel);
     }
