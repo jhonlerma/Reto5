@@ -86,6 +86,7 @@ public class ControladorTablaProductos implements ActionListener {
                 JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getActionCommand().equals("GUARDAR")) {
+            System.out.println("Botón Guardar");
             String nombreProducto = "";
             double valorUnidad = 0.0;
             double valorVenta = 0.0;
@@ -93,8 +94,6 @@ public class ControladorTablaProductos implements ActionListener {
             String categoria = "";
             int idcodigo = 0;
             int idcategoria = 0;
-
-            System.out.println("Botón Guardar");
             int fila = vistaTablaProductos.tabla.getSelectedRow();
             if (fila < 0) {
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Debe Seleccionar una fila", "Error", JOptionPane.ERROR_MESSAGE);
