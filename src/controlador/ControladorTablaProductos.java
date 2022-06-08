@@ -106,20 +106,8 @@ public class ControladorTablaProductos implements ActionListener {
                 cantidad = Integer.parseInt(vistaTablaProductos.txtDatos5.getText());
                 categoria = vistaTablaProductos.txtDatos6.getText();
                 idcodigo = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
-
-                if (categoria == "Materiales") {
-                    idcategoria = 1;
-                    System.out.println(idcategoria);
-                } else if (categoria == "Maquinaria") {
-                    idcategoria = 2;
-                    System.out.println(idcategoria);
-                } else if (categoria == "Servicios") {
-                    idcategoria = 3;
-                    System.out.println(idcategoria);
-                } else {
-                    vistaTablaProductos.txtDatos6.setText(vistaTablaProductos.tabla.getValueAt(fila, 5).toString());
-                }
-                db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
+                
+                db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, categoria, idcodigo);
                 
                 vistaTablaProductos.txtDatos1.setText("");
                 vistaTablaProductos.txtDatos2.setText("");

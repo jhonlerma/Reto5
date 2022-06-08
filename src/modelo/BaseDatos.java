@@ -76,7 +76,7 @@ public class BaseDatos {
         return rs;
     }
 
-    public void ActualizarInventario(String nombreProducto, double valorUnidad, double valorVenta, int cantidad, int categoria, int idcodigo) {
+    public void ActualizarInventario(String nombreProducto, double valorUnidad, double valorVenta, int cantidad, String categoria, int idcodigo) {
         PreparedStatement ps;
         String sql = "UPDATE Productos SET nomb_productos = ?, valor_und_productos = ?, valor_venta_productos = ?, cantidad_productos = ?, id_categoriaProductoFK = ? WHERE codigo_productos = ?";
         try {
@@ -85,7 +85,7 @@ public class BaseDatos {
             ps.setDouble(2, valorUnidad);
             ps.setDouble(3, valorVenta);
             ps.setInt(4, cantidad);
-            ps.setInt(5, categoria);
+            ps.setString(5, categoria);
             ps.setInt(6, idcodigo);
             ps.executeUpdate();
             ps.close();
