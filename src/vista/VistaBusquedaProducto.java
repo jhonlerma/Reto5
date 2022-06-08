@@ -44,7 +44,7 @@ public class VistaBusquedaProducto extends JFrame {
 
         padre = pPadre;
         setTitle("Inventario Ferreteria El Vagabundo");
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         inicializarComponentes();
     }

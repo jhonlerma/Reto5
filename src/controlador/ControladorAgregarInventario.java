@@ -6,6 +6,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.BaseDatos;
 import vista.VistaTablaProductos;
 import vista.VistaAgregarInventario;
 import vista.VistaDialogo;
@@ -19,6 +20,7 @@ public class ControladorAgregarInventario implements ActionListener{
     VistaAgregarInventario vistaAgregarInventario;
     VistaTablaProductos vistaTablaProductos;
     VistaDialogo vistaDialogo;
+    BaseDatos bd = new BaseDatos();
     
     public ControladorAgregarInventario(
             VistaAgregarInventario pVistaAgregarInventario,
@@ -40,8 +42,17 @@ public class ControladorAgregarInventario implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("GUARDAR_PRODUCTO")) {
-            // si error porque ya existe
             
+            int codigo = Integer.parseInt(vistaAgregarInventario.textoCodigo.getText());
+            String nombre = vistaAgregarInventario.textoNombre.getText();
+            double valorCompra = Double.parseDouble(vistaAgregarInventario.textoValorCompra.getText());
+            double valorVenta = Double.parseDouble(vistaAgregarInventario.textoValorVenta.getText());
+            String categoria = vistaAgregarInventario.textoCategoria.getText();
+            int cantidad = Integer.parseInt(vistaAgregarInventario.textoCantidad.getText());
+            
+            bd.abrirConexion();
+            bd.agregarProducto(codigo, nombre, valorCompra, valorVenta, categoria, cantidad);
+            /*
             if (true) {
                 boolean resultado = vistaDialogo.mostrar("El codigo ya existe", "El codigo ya existe, desea editar el inventario?");
                 
@@ -52,6 +63,7 @@ public class ControladorAgregarInventario implements ActionListener{
                 }
                 
             }
+*/
             
         } else if (e.getActionCommand().equals("VOLVER")){
             

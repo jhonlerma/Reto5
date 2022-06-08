@@ -113,14 +113,19 @@ public class BaseDatos {
     
     }
     
-    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, int categoria, int cantidad){
+    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, String categoria, int cantidad){
         
         PreparedStatement ps;
-        String sql = "INSERT FROM Productos WHERE codigo_productos = ?";
+        String sql = "INSERT INTO Productos VALUES(?, ?, ?, ?, ?, ?)";
         try {
             ps = conexion.prepareStatement(sql);
             ps.setInt(1, codigo);
-            ps.executeUpdate();
+            ps.setString(2, nombre);
+            ps.setDouble(3, valorCompra);
+            ps.setDouble(4, valorVenta);
+            ps.setString(6, categoria);
+            ps.setInt(5, cantidad);
+            ps.execute();
             ps.close();
             conexion.close();
         } catch (SQLException ex) {

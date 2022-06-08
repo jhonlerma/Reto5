@@ -70,7 +70,7 @@ public class VistaTablaProductos extends JFrame {
 
     public VistaTablaProductos() {
         setTitle("Inventario Ferreteria El Vagabundo");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         panelContainer();
     }
