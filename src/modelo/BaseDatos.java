@@ -94,8 +94,8 @@ public class BaseDatos {
             System.out.println("Problema consulta Actualizar en la base de datos" + ex);
         }
     }
-    
-    public void EliminarProducto(int codigoProducto){
+
+    public void EliminarProducto(int codigoProducto) {
         PreparedStatement ps;
         String sql = "DELETE FROM Productos WHERE codigo_productos = ?";
         try {
@@ -107,14 +107,11 @@ public class BaseDatos {
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-           
-            
-    
+
     }
-    
-    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, String categoria, int cantidad){
-        
+
+    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, String categoria, int cantidad) {
+
         PreparedStatement ps;
         String sql = "INSERT INTO Productos VALUES(?, ?, ?, ?, ?, ?)";
         try {
@@ -133,5 +130,58 @@ public class BaseDatos {
         }
 
     }
-}
 
+    public int verificarExistencia(int codigo) {
+
+        PreparedStatement ps;
+        ResultSet rs = null;
+        int resultado = 0;
+        String sql = "SELECT COUNT(*) FROM Productos WHERE codigo_productos = ?";
+
+        try {
+            
+            ps = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+            rs.next();
+            resultado = rs.getInt(1);
+            ps.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }
+
+        public String buscarProducto(int codigo) {
+
+        PreparedStatement ps;
+        ResultSet rs = null;
+        String resultado = "";
+        String sql = "SELECT * FROM Productos WHERE codigo_productos = ?";
+
+        try {
+            // nomb_productos = ?, valor_und_productos = ?, valor_venta_productos = ?, cantidad_productos = ?, id_categoriaProductoFK = ? 
+            ps = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+            rs.next();
+            resultado += "<html><h2>";
+            resultado += "Codigo: " + rs.getInt("codigo_productos") + "<br>";
+            resultado += "Nombre: " + rs.getString("nomb_productos") + "<br>";
+            resultado += "Valor Compra: " + rs.getString("valor_und_productos") + "<br>";
+            resultado += "Valor Venta: " + rs.getString("valor_venta_productos") + "<br>";
+            resultado += "Categoria: " + rs.getString("id_categoriaProductoFK") + "<br>";
+            resultado += "Cantidad: " + rs.getString("cantidad_productos");
+            resultado += "</h2></html>";
+            ps.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }
+
+}

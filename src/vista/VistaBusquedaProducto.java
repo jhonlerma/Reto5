@@ -111,6 +111,7 @@ public class VistaBusquedaProducto extends JFrame {
 
 
         labelProducto = new JLabel("");
+        labelProducto.setForeground(colorTexto);
         labelProducto.setFont(new Font("Sanserif", Font.BOLD, 14));
         labelProducto.setPreferredSize(new Dimension(400, 200));
         labelProducto.setBorder(BorderFactory.createLineBorder(Color.WHITE));

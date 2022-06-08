@@ -46,8 +46,13 @@ public class ControladorBusquedaProducto implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("BUSCAR_PRODUCTO")) {
-            if (true) {
+            
+            int codigo = Integer.parseInt(vistaBusquedaProducto.textoBuscar.getText());
+            baseDatos.abrirConexion();
+            
+            if (baseDatos.verificarExistencia(codigo) < 1) {
                 // si no existe el codigo mostrar dialogo
+                
                 boolean resultado = vistaDialogo.mostrar("No se encuentra el codigo", "No se encuentra el codigo, desea agregarlo al inventario?");
                 
                 if (resultado == true) {
@@ -57,7 +62,12 @@ public class ControladorBusquedaProducto implements ActionListener{
                    vistaBusquedaProducto.cerrar();
                 }
 
+            }else{
+                baseDatos.abrirConexion();
+                vistaBusquedaProducto.labelProducto.setText(baseDatos.buscarProducto(codigo));
             }
+            
+            
         }else if (e.getActionCommand().equals("VOLVER")) {
             vistaBusquedaProducto.padre.mostrar();
             vistaBusquedaProducto.cerrar();
