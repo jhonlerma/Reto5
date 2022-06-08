@@ -112,5 +112,21 @@ public class BaseDatos {
             
     
     }
+    
+    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, int categoria, int cantidad){
+        
+        PreparedStatement ps;
+        String sql = "INSERT FROM Productos WHERE codigo_productos = ?";
+        try {
+            ps = conexion.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.executeUpdate();
+            ps.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
 
