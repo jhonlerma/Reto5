@@ -4,10 +4,19 @@
  */
 package controlador;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.AbstractTableModel;
 import modelo.BaseDatos;
 import vista.VistaTablaProductos;
 import vista.VistaDialogo;
@@ -24,6 +33,7 @@ public class ControladorTablaProductos implements ActionListener {
     private VistaDialogo vistaDialogo;
     private ResultSet rs;
     private modelo.BaseDatos db = new modelo.BaseDatos();
+    public ResultSetModeloTable modelo;
 
     public ControladorTablaProductos(VistaTablaProductos pVistaProducto, VistaPrincipal pVistaPrincipal, VistaDialogo PVistaDialogo) {
         vistaTablaProductos = pVistaProducto;
@@ -83,7 +93,6 @@ public class ControladorTablaProductos implements ActionListener {
                 db.abrirConexion();
                 int codigoProducto = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
                 db.EliminarProducto(codigoProducto);
-//                vistaTablaProductos.tablaProductos();
                 JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getActionCommand().equals("GUARDAR")) {
@@ -106,16 +115,15 @@ public class ControladorTablaProductos implements ActionListener {
                 cantidad = Integer.parseInt(vistaTablaProductos.txtDatos5.getText());
                 categoria = vistaTablaProductos.txtDatos6.getText();
                 idcodigo = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
-                
+
                 db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, categoria, idcodigo);
-                
+
                 vistaTablaProductos.txtDatos1.setText("");
                 vistaTablaProductos.txtDatos2.setText("");
                 vistaTablaProductos.txtDatos3.setText("");
                 vistaTablaProductos.txtDatos4.setText("");
                 vistaTablaProductos.txtDatos5.setText("");
                 vistaTablaProductos.txtDatos6.setText("");
-                vistaTablaProductos.panelContainer();
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Su información se ha modificado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
 
@@ -138,6 +146,73 @@ public class ControladorTablaProductos implements ActionListener {
             System.out.println("Botón volver editar");
 
         }
+
     }
 
+}
+
+class ResultSetModeloTable extends AbstractTableModel {
+
+    private ResultSet rsRegistro;
+    private ResultSetMetaData rsMetaData;
+
+    public ResultSetModeloTable(ResultSet unResultset) {
+        rsRegistro = unResultset;
+        try {
+            rsMetaData = (ResultSetMetaData) rsRegistro.getMetaData();
+//            System.out.println("Result" + rsMetaData);
+
+        } catch (SQLException e) {
+            System.out.println("error" + e);
+        }
+    }
+
+    @Override
+    public int getColumnCount() {
+        try {
+//            System.out.println("Columnas: " + rsMetaData.getColumnCount());
+            return rsMetaData.getColumnCount();
+        } catch (SQLException e) {
+            System.out.println("error" + e);
+            return 0;
+        }
+
+    }
+
+    @Override
+    public int getRowCount() {
+        try {
+
+            rsRegistro.last();
+//            System.out.println("Row: " + rsRegistro.last());
+            return rsRegistro.getRow();
+        } catch (SQLException e) {
+            System.out.println("error" + e);
+            return 0;
+        }
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        try {
+            rsRegistro.absolute(rowIndex + 1);
+//            System.out.println("getValueAt" + rsRegistro.absolute(rowIndex + 1));
+//            System.out.println("getValueAt" + rsRegistro.getObject(columnIndex + 1));
+            return rsRegistro.getObject(columnIndex + 1);
+        } catch (SQLException e) {
+            System.out.println("error" + e);
+            return null;
+        }
+    }
+
+    @Override
+    public String getColumnName(int c) {
+        try {
+//            System.out.println("Nombre Columnas: " + rsMetaData.getColumnName(c + 1));
+            return rsMetaData.getColumnName(c + 1);
+        } catch (SQLException ex) {
+            System.out.println("error" + ex);
+            return null;
+        }
+    }
 }

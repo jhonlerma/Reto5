@@ -39,7 +39,7 @@ public class VistaTablaProductos extends JFrame {
     public Color colorAceptar = new Color(0, 200, 83);
     public Color colorCancelar = new Color(229, 57, 53);
 
-//    private JComboBox nombreTablas;
+    public JPanel panel;
     private JLabel labelPrincipal;
     public JTable tabla;
 
@@ -65,8 +65,9 @@ public class VistaTablaProductos extends JFrame {
 
     private ResultSet rs;
     private modelo.BaseDatos db = new modelo.BaseDatos();
-    private ResultSetModeloTable modelo;
-    private JScrollPane scroll;
+    public  ResultSetModeloTable modelo;
+    public JScrollPane scroll;
+    public GridBagConstraints bagConstraints;
 
     public VistaTablaProductos() {
         setTitle("Inventario Ferreteria El Vagabundo");
@@ -77,11 +78,11 @@ public class VistaTablaProductos extends JFrame {
 
     public void panelContainer() {
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBackground(colorFondo);
         panel.setBorder(new EmptyBorder(new Insets(24, 24, 24, 24)));
-        GridBagConstraints bagConstraints = new GridBagConstraints();
+        bagConstraints = new GridBagConstraints();
         bagConstraints.fill = GridBagConstraints.HORIZONTAL;
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
         bagConstraints.weightx = 1;
@@ -105,6 +106,7 @@ public class VistaTablaProductos extends JFrame {
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 7;
         bagConstraints.gridwidth = 2;
+        modelo.fireTableDataChanged();
         panel.add(tablaProductos(), bagConstraints);
         validate();
         panelEditar(bagConstraints, panel);
@@ -163,7 +165,6 @@ public class VistaTablaProductos extends JFrame {
         db.abrirConexion();
         rs = db.InventarioTotal();
         modelo = new ResultSetModeloTable(rs);
-        modelo.fireTableDataChanged();
         tabla = new JTable(modelo);
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scroll = new JScrollPane(tabla);
