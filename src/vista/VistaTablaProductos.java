@@ -4,9 +4,7 @@
  */
 package vista;
 
-import com.mysql.cj.jdbc.DatabaseMetaData;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -15,23 +13,17 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.AbstractTableModel;
 
@@ -48,7 +40,7 @@ public class VistaTablaProductos extends JFrame {
     public Color colorCancelar = new Color(229, 57, 53);
 
 //    private JComboBox nombreTablas;
-    private JLabel labelInventario;
+    private JLabel labelPrincipal;
     public JTable tabla;
 
     private JLabel labelDatos1;
@@ -80,15 +72,12 @@ public class VistaTablaProductos extends JFrame {
         setTitle("Inventario Ferreteria El Vagabundo");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-        setLocation(1000, 0);
         panelContainer();
     }
 
     public void panelContainer() {
 
         JPanel panel = new JPanel();
-//        panel.setSize(680, 420);
-        panel.setLocation(0, 0);
         panel.setLayout(new GridBagLayout());
         panel.setBackground(colorFondo);
         panel.setBorder(new EmptyBorder(new Insets(24, 24, 24, 24)));
@@ -97,24 +86,20 @@ public class VistaTablaProductos extends JFrame {
         bagConstraints.anchor = GridBagConstraints.PAGE_START;
         bagConstraints.weightx = 1;
         bagConstraints.weighty = 1;
-        bagConstraints.ipady = 4;
+        bagConstraints.ipady = 12;
         bagConstraints.insets = new Insets(4, 8, 4, 8);
+
+        labelPrincipal = new JLabel("<html><h3>Consultar modificar eliminar inventario</h3></html>",SwingConstants.CENTER);
+        labelPrincipal.setIcon(new ImageIcon("src/imagenes/vagabundo_editar_icono_128.png"));
+        labelPrincipal.setBackground(colorFondo);
+        labelPrincipal.setForeground(colorTexto);
+        labelPrincipal.setFont(new Font("Sanserif", Font.BOLD, 14));
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 0;
         bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 1;
+        bagConstraints.gridwidth = 4;
+        panel.add(labelPrincipal, bagConstraints);
 
-        labelInventario = new JLabel("Datos inventario");
-        labelInventario.setBackground(colorFondo);
-        labelInventario.setForeground(colorTexto);
-        labelInventario.setFont(new Font("Sanserif", Font.BOLD, 14));
-        bagConstraints.gridx = 0;
-        bagConstraints.gridy = 0;
-        bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 5;
-        panel.add(labelInventario, bagConstraints);
-
-//        nombreTablas = new JComboBox();
         db.abrirConexion();
         rs = db.InventarioTotal();
         modelo = new ResultSetModeloTable(rs);
@@ -123,38 +108,36 @@ public class VistaTablaProductos extends JFrame {
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 7;
-        bagConstraints.gridwidth = 3;
+        bagConstraints.gridwidth = 2;
         scroll = new JScrollPane(tabla);
-        scroll.setPreferredSize(new Dimension(500, 300));
+        scroll.setPreferredSize(new Dimension(640,360));
         panel.add(scroll, bagConstraints);
         validate();
-//        try {
-//            while (rs.next()) {
-//                System.out.println(rs);
-//                nombreTablas.addItem(rs.getString("alias_cliente"));
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(TablaProductos.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        panel.add(nombreTablas);
         panelEditar(bagConstraints, panel);
+
+        bagConstraints.gridx = 2;
+        bagConstraints.gridy = 7;
+        bagConstraints.gridheight = 1;
+        bagConstraints.gridwidth = 2;
+        panel.add(Box.createVerticalStrut(12), bagConstraints);
 
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 8;
         bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 5;
-        panel.add(Box.createHorizontalStrut(100), bagConstraints);
+        bagConstraints.gridwidth = 4;
+        panel.add(Box.createVerticalStrut(12), bagConstraints);
 
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
-        bagConstraints.gridwidth = 2;
-        panel.add(Box.createHorizontalStrut(100), bagConstraints);
+        bagConstraints.gridwidth = 1;
+        panel.add(Box.createVerticalStrut(12), bagConstraints);
 
         botonVolver = new JButton("Volver");
         customButton(botonVolver, colorBoton, "volver_icono.png");
         botonVolver.setActionCommand("VOLVER");
-        bagConstraints.gridx = 2;
+        bagConstraints.weightx = 0.25;
+        bagConstraints.gridx = 1;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -163,7 +146,8 @@ public class VistaTablaProductos extends JFrame {
         botonEditar = new JButton("Edición");
         customButton(botonEditar, colorBoton, "modificar_icono.png");
         botonEditar.setActionCommand("EDITAR");
-        bagConstraints.gridx = 3;
+        bagConstraints.weightx = 1;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -172,7 +156,7 @@ public class VistaTablaProductos extends JFrame {
         botonEliminar = new JButton("Eliminar");
         customButton(botonEliminar, colorCancelar, "eliminar_icono.png");
         botonEliminar.setActionCommand("ELIMINAR");
-        bagConstraints.gridx = 4;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 9;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -197,9 +181,9 @@ public class VistaTablaProductos extends JFrame {
     public void panelEditar(GridBagConstraints bagConstraints, JPanel panel) {
         labelDatos1 = new JLabel("Código:");
         customLabel(labelDatos1);
-        bagConstraints.insets = new Insets(8, 8, 8, 8);
-        bagConstraints.weighty = 1;
-        bagConstraints.gridx = 3;
+        
+        bagConstraints.weighty = 0.5;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -208,7 +192,7 @@ public class VistaTablaProductos extends JFrame {
         txtDatos1 = new JTextField(20);
         txtDatos1.setEnabled(false);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 4;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 1;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -217,7 +201,7 @@ public class VistaTablaProductos extends JFrame {
         labelDatos2 = new JLabel("Nombre:");
         customLabel(labelDatos2);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 2;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -225,8 +209,8 @@ public class VistaTablaProductos extends JFrame {
 
         txtDatos2 = new JTextField(20);
         txtDatos2.setEnabled(false);
-        bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.weighty = 0.5;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 2;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -235,7 +219,7 @@ public class VistaTablaProductos extends JFrame {
         labelDatos3 = new JLabel("Valor de compra:");
         customLabel(labelDatos3);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 3;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -243,8 +227,8 @@ public class VistaTablaProductos extends JFrame {
 
         txtDatos3 = new JTextField(20);
         txtDatos3.setEnabled(false);
-        bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.weighty = 0.5;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 3;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -253,7 +237,7 @@ public class VistaTablaProductos extends JFrame {
         labelDatos4 = new JLabel("Valor de venta:");
         customLabel(labelDatos4);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 4;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -261,8 +245,8 @@ public class VistaTablaProductos extends JFrame {
 
         txtDatos4 = new JTextField(20);
         txtDatos4.setEnabled(false);
-        bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.weighty = 0.5;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 4;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -271,7 +255,7 @@ public class VistaTablaProductos extends JFrame {
         labelDatos5 = new JLabel("Cant. de producto:");
         customLabel(labelDatos5);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 5;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -279,8 +263,8 @@ public class VistaTablaProductos extends JFrame {
 
         txtDatos5 = new JTextField(20);
         txtDatos5.setEnabled(false);
-        bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.weighty = 0.5;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 5;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -289,7 +273,7 @@ public class VistaTablaProductos extends JFrame {
         labelDatos6 = new JLabel("Categoría:");
         customLabel(labelDatos6);
         bagConstraints.weighty = 0.5;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 6;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -298,30 +282,30 @@ public class VistaTablaProductos extends JFrame {
         txtDatos6 = new JTextField(20);
         txtDatos6.setEnabled(false);
         bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 6;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
         panel.add(txtDatos6, bagConstraints);
         
         
-        botonVolverEditar = new JButton("Salir");
-        customButton(botonVolverEditar, colorBoton, "volver_icono.png");
+        botonVolverEditar = new JButton("Fin Editar");
+        customButton(botonVolverEditar, colorCancelar, "volver_icono.png");
         botonVolverEditar.setActionCommand("VOLVER_EDITAR");
         botonVolverEditar.setVisible(false);
         bagConstraints.weighty = 1;
-        bagConstraints.gridx = 3;
+        bagConstraints.gridx = 2;
         bagConstraints.gridy = 7;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
         panel.add(botonVolverEditar, bagConstraints);
 
         botonGuardar = new JButton("Guardar");
-        customButton(botonGuardar, colorBoton, "guardar_icono.png");
+        customButton(botonGuardar, colorAceptar, "guardar_icono.png");
         botonGuardar.setActionCommand("GUARDAR");
         botonGuardar.setVisible(false);
         bagConstraints.weighty = 1;
-        bagConstraints.gridx = 4;
+        bagConstraints.gridx = 3;
         bagConstraints.gridy = 7;
         bagConstraints.gridheight = 1;
         bagConstraints.gridwidth = 1;
@@ -331,12 +315,12 @@ public class VistaTablaProductos extends JFrame {
 
     public void iniciar() {
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
     public void cerrar() {
-        pack();
-        setVisible(false);
+        dispose();
     }
 
 }

@@ -17,7 +17,7 @@ import vista.VistaDialogo;
 public class ControladorAgregarInventario implements ActionListener{
 
     VistaAgregarInventario vistaAgregarInventario;
-    VistaTablaProductos tablaProductos;
+    VistaTablaProductos vistaTablaProductos;
     VistaDialogo vistaDialogo;
     
     public ControladorAgregarInventario(
@@ -26,8 +26,8 @@ public class ControladorAgregarInventario implements ActionListener{
             VistaDialogo pvVistaDialogo
     ) {
         
-        vistaAgregarInventario = pVistaAgregarInventario;
-        tablaProductos = pTablaProductos;
+        vistaAgregarInventario = pVistaAgregarInventario;//para ver cambio XD
+        vistaTablaProductos = pTablaProductos;
         vistaDialogo = pvVistaDialogo;
         agregarListeners();
     }
@@ -41,12 +41,13 @@ public class ControladorAgregarInventario implements ActionListener{
 
         if (e.getActionCommand().equals("GUARDAR_PRODUCTO")) {
             // si error porque ya existe
+            
             if (true) {
                 boolean resultado = vistaDialogo.mostrar("El codigo ya existe", "El codigo ya existe, desea editar el inventario?");
                 
                 if (resultado == true) {
                     
-                   tablaProductos.iniciar();
+                   vistaTablaProductos.iniciar();
                    vistaAgregarInventario.cerrar();
                 }
                 

@@ -65,8 +65,7 @@ public class BaseDatos {
         PreparedStatement ps;
         ResultSet rs = null;
 
-        String sql = "Select codigo_productos as Código ,nomb_productos as Nombre_Producto,valor_und_productos as Valor_Unidad,valor_venta_productos as Valor_Venta, cantidad_productos as Cantidad_Producto, nomb_categoriaProducto as Categoria from Productos, categoriaproducto  where id_categoriaProductoFK = id_categoriaProducto";
-
+        String sql = "Select * from Productos";
         try {
             //Ejecución de la consulta
             ps = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
