@@ -94,8 +94,8 @@ public class BaseDatos {
             System.out.println("Problema consulta Actualizar en la base de datos" + ex);
         }
     }
-    
-    public void EliminarProducto(int codigoProducto){
+
+    public void EliminarProducto(int codigoProducto) {
         PreparedStatement ps;
         String sql = "DELETE FROM Productos WHERE codigo_productos = ?";
         try {
@@ -107,14 +107,11 @@ public class BaseDatos {
         } catch (SQLException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-           
-            
-    
+
     }
-    
-    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, String categoria, int cantidad){
-        
+
+    public void agregarProducto(int codigo, String nombre, double valorCompra, double valorVenta, String categoria, int cantidad) {
+
         PreparedStatement ps;
         String sql = "INSERT INTO Productos VALUES(?, ?, ?, ?, ?, ?)";
         try {
@@ -133,5 +130,28 @@ public class BaseDatos {
         }
 
     }
-}
 
+    public int verificarExistencia(int codigo) {
+
+        PreparedStatement ps;
+        ResultSet rs = null;
+        int resultado = 0;
+        String sql = "SELECT COUNT(*) FROM Productos WHERE codigo_productos = ?";
+
+        try {
+            
+            ps = conexion.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps.setInt(1, codigo);
+            rs = ps.executeQuery();
+            rs.next();
+            resultado = rs.getInt(1);
+            ps.close();
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }
+
+}
