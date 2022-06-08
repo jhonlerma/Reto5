@@ -83,6 +83,7 @@ public class ControladorTablaProductos implements ActionListener {
                 db.abrirConexion();
                 int codigoProducto = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
                 db.EliminarProducto(codigoProducto);
+//                vistaTablaProductos.tablaProductos();
                 JOptionPane.showMessageDialog(vistaTablaProductos, "El producto se ha eliminado del inventario", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (e.getActionCommand().equals("GUARDAR")) {
@@ -106,13 +107,6 @@ public class ControladorTablaProductos implements ActionListener {
                 categoria = vistaTablaProductos.txtDatos6.getText();
                 idcodigo = Integer.parseInt(vistaTablaProductos.tabla.getValueAt(fila, 0).toString());
 
-                System.out.println(nombreProducto);
-                System.out.println(valorUnidad);
-                System.out.println(valorVenta);
-                System.out.println(cantidad);
-                System.out.println(categoria);
-                System.out.println(idcodigo);
-
                 if (categoria == "Materiales") {
                     idcategoria = 1;
                     System.out.println(idcategoria);
@@ -126,10 +120,24 @@ public class ControladorTablaProductos implements ActionListener {
                     vistaTablaProductos.txtDatos6.setText(vistaTablaProductos.tabla.getValueAt(fila, 5).toString());
                 }
                 db.ActualizarInventario(nombreProducto, valorUnidad, valorVenta, cantidad, idcategoria, idcodigo);
+                
+                vistaTablaProductos.txtDatos1.setText("");
+                vistaTablaProductos.txtDatos2.setText("");
+                vistaTablaProductos.txtDatos3.setText("");
+                vistaTablaProductos.txtDatos4.setText("");
+                vistaTablaProductos.txtDatos5.setText("");
+                vistaTablaProductos.txtDatos6.setText("");
+                vistaTablaProductos.panelContainer();
                 JOptionPane.showMessageDialog(vistaTablaProductos, "Su información se ha modificado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } else if (e.getActionCommand().equals("VOLVER_EDITAR")) {
+            vistaTablaProductos.txtDatos1.setText("");
+            vistaTablaProductos.txtDatos2.setText("");
+            vistaTablaProductos.txtDatos3.setText("");
+            vistaTablaProductos.txtDatos4.setText("");
+            vistaTablaProductos.txtDatos5.setText("");
+            vistaTablaProductos.txtDatos6.setText("");
             vistaTablaProductos.botonEliminar.setEnabled(true);
             vistaTablaProductos.botonGuardar.setVisible(false);
             vistaTablaProductos.botonVolverEditar.setVisible(false);
@@ -139,7 +147,6 @@ public class ControladorTablaProductos implements ActionListener {
             vistaTablaProductos.txtDatos4.setEnabled(false);
             vistaTablaProductos.txtDatos5.setEnabled(false);
             vistaTablaProductos.txtDatos6.setEnabled(false);
-
             System.out.println("Botón volver editar");
 
         }
